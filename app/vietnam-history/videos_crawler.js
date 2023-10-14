@@ -17,6 +17,8 @@ const scrapeWebsite = async (url) => {
         results.each((_, element) => {
             const aLink = $(element).find("> a")
             const title = aLink.attr("title")
+                .replace("Khát vọng non sông: ", "")
+                .replace("Hào khí ngàn năm: ", "")
             const link = aLink.attr("href")
 
             const imgThumbnail = aLink.find("> img")
