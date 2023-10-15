@@ -1,5 +1,5 @@
 import {cookies} from 'next/headers'
-import getBaseURL from "@/utils/getBaseURL";
+import getURL from "@/utils/getURL";
 import VideoList from "@/app/vietnam-history/components/video-list";
 import {Video} from "@/app/api/v1/vietnam-history/models";
 
@@ -17,7 +17,7 @@ export default async function WatchNext() {
 }
 
 async function fetchWatchNextVideos(lastWatchedId?: string): Promise<Video[]> {
-    const url = getBaseURL("/api/v1/vietnam-history/watch-next")
+    const url = getURL("/api/v1/vietnam-history/watch-next")
     if (lastWatchedId) {
         url.searchParams.set("lastWatchedId", lastWatchedId)
     }
