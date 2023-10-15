@@ -15,15 +15,21 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <html lang="en">
         <body className={inter.className}>
         <main className="p-8 md:p-12 lg:p-24">
-            <h1 className="text-5xl font-bold">Lịch sử <span className="block md:inline">Việt Nam 🇻🇳</span></h1>
+            <Link href="/vietnam-history">
+                <h1 className="text-5xl font-bold">Lịch sử <span className="block md:inline">Việt Nam 🇻🇳</span></h1>
+            </Link>
             <div className="divider"></div>
             <div>
                 {children}
             </div>
             <div className="divider"></div>
-            <p className="text-sm">® Bản quyền thuộc về {" "}
-                <Link href="https://vtv.vn/" target="_blank" className="underline">VTV.vn</Link>
-            </p>
+            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+                <aside>
+                    <p>Copyright © 2023 - Bản quyền toàn bộ videos thuộc về{" "}
+                        <Link href="https://vtv.vn/" target="_blank" className="underline">VTV.vn</Link>
+                    </p>
+                </aside>
+            </footer>
         </main>
         </body>
         </html>
