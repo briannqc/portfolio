@@ -3,9 +3,9 @@ import VideoLibrary from "@/app/vietnam-history/components/video-library";
 
 export default function VietnamHistory() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="flex flex-col items-start justify-between">
             <WatchNext/>
-            <div className="divider"></div>
+            <div className="p-3"/>
             <VideoLibrary/>
         </main>
     )

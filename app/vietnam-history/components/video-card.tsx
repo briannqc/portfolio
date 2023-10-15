@@ -13,7 +13,7 @@ type VideoCardProps = {
 
 export default function VideoCard(props: VideoCardProps) {
     return (
-        <div className="card card-compact max-w-xs bg-base-100 shadow-lg">
+        <div className="card card-compact max-w-[16rem] md:max-w-xs bg-base-100 shadow-lg">
             <figure className="overflow-hidden rounded-md w-fit h-fit">
                 <Image
                     src={props.thumbnail.url}
