@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import {fetchWatchNextVideos} from "@/app/api/v1/vn-history/data_store";
+import {fetchWatchNextVideos} from "@/app/api/v1/vietnam-history/data_store";
 
 export async function GET(request: NextRequest) {
     const lastWatchedId = extractLastWatchedIdQuery(request)
