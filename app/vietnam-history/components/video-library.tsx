@@ -1,4 +1,4 @@
-import getURL from "@/utils/getURL";
+import getBaseURL from "@/utils/getBaseURL";
 import {Video} from "@/app/api/v1/vietnam-history/models";
 import VideoList from "@/app/vietnam-history/components/video-list";
 
@@ -14,7 +14,7 @@ export default async function VideoLibrary() {
 }
 
 async function fetchVideoLibrary(): Promise<Video[]> {
-    const url = getURL("/api/v1/vietnam-history/video-library")
+    const url = getBaseURL("/api/v1/vietnam-history/video-library")
     const res = await fetch(url)
     if (!res.ok) {
         return []
