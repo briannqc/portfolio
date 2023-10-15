@@ -26,7 +26,7 @@ export default function VideoCard(props: VideoCardProps) {
                 <h2 className="card-title text-base xl:text-lg">{props.title}</h2>
                 <p className="text-xs md:text-base">{props.datetime}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">{props.watched ? "Xem Lại" : "Xem Ngay"}</button>
+                    <button className="btn btn-sm btn-primary">{props.watched ? "Xem Lại" : "Xem Ngay"}</button>
                 </div>
             </div>
         </div>
