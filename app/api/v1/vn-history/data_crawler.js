@@ -27,8 +27,10 @@ const scrapeWebsite = async (url) => {
             const thumbnailUrl = scrapeThumbnail(imgThumbnail, thumbnailWidth, thumbnailHeight)
 
             const time = $(element).find(".time").text()
+            const id = dateTimeToInt(time)
 
             const video = {
+                id: id,
                 title: title,
                 url: `https://vtv.vn${link}`,
                 datetime: time,
@@ -54,6 +56,24 @@ const scrapeThumbnail = (imgElement, width, height) => {
 
     const expectedSize = `zoom/${width}_${height}`
     return url.replace(originalSize, expectedSize)
+}
+
+/**
+ * Convert date time string to Integer
+ * @param datetime Of format "13/10/2023 22:22"
+ * @returns {number} E.g. 202310132222
+ */
+const dateTimeToInt = (datetime) => {
+    const [datePart, timePart] = datetime.split(' ');
+    const [day, month, year] = datePart.split('/').map(Number);
+    const [hour, minute] = timePart.split(':').map(Number);
+
+    const yyyy = year
+    const MM = month.toString().padStart(2, '0')
+    const dd = day.toString().padStart(2, '0')
+    const hh = hour.toString().padStart(2, '0')
+    const mm = minute.toString().padStart(2, '0')
+    return Number(`${yyyy}${MM}${dd}${hh}${mm}`);
 }
 
 const scrapeData = async () => {
