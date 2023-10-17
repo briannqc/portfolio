@@ -2,6 +2,7 @@ import './globals.css'
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import Script from "next/script";
+import Link from "next/link";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -26,10 +27,36 @@ export default function RootLayout(
             />
         </head>
         <body className={inter.className}>
+        <NavBar/>
         <main className="bg-inherit min-h-screen w-screen p-8 md:p-12 lg:p-24">
             {children}
         </main>
         </body>
         </html>
+    )
+}
+
+function NavBar() {
+    return (
+        <div className="navbar bg-inherit">
+            <div className="flex-1">
+                <Link href="/" className="btn btn-ghost normal-case text-xl">Brian NQC</Link>
+            </div>
+            <div className="flex-none">
+                <ul className="menu menu-horizontal px-1">
+                    <li><Link href="https://www.linkedin.com/in/briannqc/">Hire me</Link></li>
+                    <li>
+                        <details>
+                            <summary>
+                                Projects
+                            </summary>
+                            <ul className="p-2 bg-base-100">
+                                <li><Link href="/vietnam-history">History of Vietnam</Link></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </div>
+        </div>
     )
 }

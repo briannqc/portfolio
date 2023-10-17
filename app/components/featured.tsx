@@ -8,14 +8,16 @@ export default async function Featured() {
             subtitle: "Educational videos to learn History of Vietnam since its early days",
             background: "/history-of-vietnam.jpeg",
             link: "/vietnam-history"
-        }
+        },
     ]
     return (
         <section>
             <h2 className="mt-16 text-2xl font-semibold">Featured</h2>
             <p>Cool Projects/Apps/Tools I have developed.</p>
-            <div className="mt-2 grid text-center md:grid-cols-3 md:text-left">
-                {features.map(p => <FeaturedCard key={p.link} {...p}/>)}
+            <div className="carousel rounded-box space-x-4 p-4 w-full">
+                {features.map(f =>
+                    <div className="carousel-item" key={f.link}><FeaturedCard  {...f}/></div>
+                )}
             </div>
         </section>
     )
@@ -25,7 +27,7 @@ async function FeaturedCard(
     {title, subtitle, background, link}: { title: string, subtitle: string, background: string, link: string }
 ) {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl image-full">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full">
             <figure>
                 <Image
                     className="object-cover"
@@ -38,7 +40,7 @@ async function FeaturedCard(
                 <h2 className="card-title">{title}!</h2>
                 <p>{subtitle}</p>
                 <div className="card-actions justify-end">
-                    <Link className="btn btn-primary" href={link}>Go There</Link>
+                    <Link className="btn btn-outline btn-success" href={link}>Go There</Link>
                 </div>
             </div>
         </div>
