@@ -28,7 +28,7 @@ export default function RecentlyWatched() {
                 setLoading(false)
             })
     }
-    useEffect(() => loadVideos, [])
+    useEffect(loadVideos, [recentlyWatchedVideoIds])
 
     return (
         <VideoList
