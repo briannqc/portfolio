@@ -1,37 +1,32 @@
 import '@/app/globals.css'
 import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
 import Link from "next/link";
-
-const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
     title: 'Lịch sử Việt Nam',
     description: 'Phim hoạt hình Lịch sử Việt Nam',
 }
 
-export default function RootLayout({children}: { children: React.ReactNode }) {
+export default function Layout({children}: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-        <body className={inter.className}>
-        <main className="p-8 md:p-12 lg:p-24">
-            <Link href="/vietnam-history">
-                <h1 className="text-5xl font-bold">Lịch sử <span className="block md:inline">Việt Nam 🇻🇳</span></h1>
-            </Link>
+        <>
+            <header>
+                <Link href="/vietnam-history">
+                    <h1 className="text-5xl font-bold">Lịch sử <span className="block md:inline">Việt Nam 🇻🇳</span></h1>
+                </Link>
+            </header>
             <div className="divider"></div>
-            <div>
-                {children}
+            <div>{children}</div>
+            <div className="divider"></div>
+            <div className="text-center">
+                <p className="text-sm">Copyright © Bản quyền toàn bộ video thuộc về{" "}
+                    <Link href="https://vtv.vn/" target="_blank" className="underline">VTV.vn</Link>
+                </p>
+                <p className="text-sm lg:px-">Vì lý do bản quyền, chúng tôi sẽ không phát video trực tiếp tại đây hoặc
+                    nhúng video vào trang web này .
+                    Thay vào đó, bạn sẽ được điều hướng sang trang web chính thức của VTV.
+                </p>
             </div>
-            <div className="divider"></div>
-            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
-                <aside>
-                    <p>Copyright © 2023 - Bản quyền toàn bộ videos thuộc về{" "}
-                        <Link href="https://vtv.vn/" target="_blank" className="underline">VTV.vn</Link>
-                    </p>
-                </aside>
-            </footer>
-        </main>
-        </body>
-        </html>
+        </>
     )
 }

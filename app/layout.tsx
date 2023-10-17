@@ -26,11 +26,9 @@ export default function RootLayout(
             />
         </head>
         <body className={inter.className}>
-        <div className="flex justify-center bg-inherit">
-            <div className="min-h-screen w-screen max-w-4xl p-3 py-12">
-                {children}
-            </div>
-        </div>
+        <main className="bg-inherit min-h-screen w-screen p-8 md:p-12 lg:p-24">
+            {children}
+        </main>
         </body>
         </html>
     )
