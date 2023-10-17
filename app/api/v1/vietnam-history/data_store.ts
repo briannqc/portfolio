@@ -4,13 +4,25 @@ async function readAll(): Promise<Video[]> {
     return require("./data.json")
 }
 
-export async function fetchVideoLibrary(page: number): Promise<Video[]> {
-    const pageSize = 50
-    const videos = await readAll()
+export type VideoQuery = {
+    page?: number
+    ids?: number[]
+}
 
-    const start = (page - 1) * pageSize
-    const end = start + pageSize
-    return videos.slice(start, end)
+export async function fetchVideoLibrary(query: VideoQuery): Promise<Video[]> {
+    let videos = await readAll()
+    if (query.ids) {
+        videos = videos.filter(v => query.ids!.includes(v.id))
+    }
+
+    if (query.page) {
+        const pageSize = 50
+        const start = (query.page - 1) * pageSize
+        const end = start + pageSize
+        videos = videos.slice(start, end)
+    }
+
+    return videos
 }
 
 export async function fetchWatchNextVideos(lastWatchedVideoId: number): Promise<Video[]> {
