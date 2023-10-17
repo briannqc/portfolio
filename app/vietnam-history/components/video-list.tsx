@@ -6,9 +6,12 @@ type VideoListProps = {
     subtitle: string
     videos: Video[]
 }
-export default async function VideoList({title, subtitle, videos}: VideoListProps) {
+export default function VideoList({title, subtitle, videos}: VideoListProps) {
+    if (videos.length === 0) {
+        return <></>
+    }
     return (
-        <section className="w-full">
+        <section className="w-full py-3">
             <div className="flex items-center justify-between">
                 <div className="space-y-1">
                     <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
