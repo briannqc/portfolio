@@ -1,5 +1,6 @@
 import BlogStats from "@/app/components/blog";
 import Testimonial from "@/app/components/testimonial";
+import Featured from "@/app/components/featured";
 
 export default function Home() {
     const now = new Date()
@@ -12,7 +13,7 @@ export default function Home() {
     }
 
     return (
-        <section>
+        <main>
             <div>
                 <h1 className="text-5xl font-bold">Hi, I&apos;m Brian!</h1>
                 <p className="pt-6">
@@ -35,8 +36,9 @@ export default function Home() {
                     mentoring and writing tech blogs.
                 </p>
                 <BlogStats/>
+                <Featured/>
                 <Testimonial/>
             </div>
-        </section>
+        </main>
     )
 }

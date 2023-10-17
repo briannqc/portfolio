@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function BlogStats() {
     return (
-        <div className="mt-2 grid text-center md:grid-cols-2 md:text-left">
+        <section className="mt-2 grid text-center md:grid-cols-2 md:text-left">
             <LinkedInSummary/>
             <MediumSummary/>
-        </div>
+        </section>
     );
 };
 

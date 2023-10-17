@@ -27,13 +27,13 @@ export default async function Testimonial() {
     ]
 
     return (
-        <div>
+        <section>
             <h2 className="mt-16 text-2xl font-semibold">Testimonials</h2>
-            <p>What my coworkers say about me</p>
+            <p>What my coworkers say about me.</p>
             <div className="mt-2 grid text-center md:grid-cols-3 md:text-left">
                 {persons.map(p => <TestimonialCard key={p.link} {...p}/>)}
             </div>
-        </div>
+        </section>
     )
 }
 
