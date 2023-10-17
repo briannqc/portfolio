@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ButtonWatch from "@/app/vietnam-history/components/button-watch";
 
 type VideoCardProps = {
     id: number
@@ -8,7 +9,6 @@ type VideoCardProps = {
     thumbnail: {
         url: string
     }
-    watched?: boolean
 }
 
 export default function VideoCard(props: VideoCardProps) {
@@ -26,7 +26,7 @@ export default function VideoCard(props: VideoCardProps) {
                 <h2 className="card-title text-base xl:text-lg">{props.title}</h2>
                 <p className="text-xs md:text-base">{props.datetime}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-sm btn-primary">{props.watched ? "Xem Lại" : "Xem Ngay"}</button>
+                    <ButtonWatch videoId={props.id} url={props.url}/>
                 </div>
             </div>
         </div>
