@@ -16,6 +16,7 @@ export default function VideoCard(props: VideoCardProps) {
         <div className="card card-compact max-w-[16rem] md:max-w-xs bg-base-100 shadow-lg">
             <figure className="overflow-hidden rounded-md w-fit h-fit">
                 <Image
+                    unoptimized
                     src={props.thumbnail.url}
                     alt={props.title}
                     width={400}
