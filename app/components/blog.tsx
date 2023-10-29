@@ -1,6 +1,7 @@
 import Link from "next/link";
+import {fetchMediumStats} from "@/app/components/blog-api";
 
-export default function BlogStats() {
+export default async function BlogStats() {
     return (
         <section className="mt-2 grid text-center md:grid-cols-2 md:text-left">
             <LinkedInSummary/>
@@ -18,18 +19,19 @@ function LinkedInSummary() {
         >
             <div
                 className="group rounded-lg border border-transparent px-4 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-                <h2 className={`mb-3 text-xl font-semibold`}>
+                <h2 className="mb-3 text-xl font-semibold">
                     Linked
                     <i className="fa-brands fa-linkedin fa-lg text-[#0072b1]"></i>
                     <ArrowIcon/>
                 </h2>
-                <p className={`m-0 text-sm opacity-50`}>1400+ Engagements ○ 172K+ Impressions</p>
+                <p className="m-0 text-sm opacity-50">1400+ Engagements ○ 172K+ Impressions</p>
             </div>
         </Link>
     );
 }
 
-function MediumSummary() {
+async function MediumSummary() {
+    const {followersCount, articlesCount} = await fetchMediumStats()
     return (
         <Link
             href="https://medium.com/@briannqc"
@@ -38,12 +40,12 @@ function MediumSummary() {
         >
             <div
                 className="group rounded-lg border border-transparent px-4 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-                <h2 className={`mb-3 text-xl font-semibold`}>
+                <h2 className="mb-3 text-xl font-semibold">
                     <i className="fa-brands fa-medium fa-lg"></i>
                     Medium
                     <ArrowIcon/>
                 </h2>
-                <p className={`m-0 text-sm opacity-50`}>300+ followers, 1500+ claps, 10K views monthly</p>
+                <p className="m-0 text-sm opacity-50">{followersCount} followers ○ {articlesCount} articles</p>
             </div>
         </Link>
     );
