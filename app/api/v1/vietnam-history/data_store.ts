@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import type {Element} from "domhandler";
 import {Video} from "@/app/api/v1/vietnam-history/models";
 
 async function fetchAllVideos(): Promise<Video[]> {
@@ -55,7 +56,7 @@ async function fetchVideosOnPage(page: number): Promise<Video[]> {
     return data
 }
 
-function constructVideoFromLiElement($: cheerio.CheerioAPI, element: cheerio.Element): Video {
+function constructVideoFromLiElement($: cheerio.CheerioAPI, element: Element): Video {
     const aLink = $(element).find("> a")!
     const title = aLink.attr("title")!.replace("Khát vọng non sông: ", "")
     const link = aLink.attr("href")
@@ -81,7 +82,7 @@ function constructVideoFromLiElement($: cheerio.CheerioAPI, element: cheerio.Ele
     }
 }
 
-function scrapeThumbnailUrl(imgElement: cheerio.Cheerio<cheerio.Element>, width: number, height: number) {
+function scrapeThumbnailUrl(imgElement: cheerio.Cheerio<Element>, width: number, height: number) {
     const url = imgElement.attr("src")!
     const originalWidth = imgElement.attr("width")
     const originalHeight = imgElement.attr("height")
