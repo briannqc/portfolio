@@ -30,7 +30,7 @@ export default async function OfficeCheckIn(): Promise<React.JSX.Element> {
         <div>
             <h1 className="text-5xl font-bold">{heading}</h1>
             <p className="mt-6 mb-1">{subheading}</p>
-            {visits.visitCountThisQuarter &&
+            {visits.visitCountThisQuarter > 0 &&
                 <p className="my-1">I went to office {visits.visitCountThisQuarter} days this quarter.</p>}
             {visits.trackingSince &&
                 <p className="my-1">I started tracking my office check-in
