@@ -23,7 +23,7 @@ export default function Layout({children}: { children: React.ReactNode }) {
                     <Link href="https://vtv.vn/" target="_blank" className="underline">VTV.vn</Link>
                 </p>
                 <p className="text-sm lg:px-">Vì lý do bản quyền, chúng tôi sẽ không phát video trực tiếp tại đây hoặc
-                    nhúng video vào trang web này .
+                    nhúng video vào trang web này.
                     Thay vào đó, bạn sẽ được điều hướng sang trang web chính thức của VTV.
                 </p>
             </div>

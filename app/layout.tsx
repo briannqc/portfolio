@@ -3,6 +3,7 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import Script from "next/script";
 import Link from "next/link";
+import React from "react";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -52,6 +53,7 @@ function NavBar() {
                             </summary>
                             <ul className="p-2 bg-base-100">
                                 <li><Link href="/vietnam-history">History of Vietnam</Link></li>
+                                <li><Link href="/office-check-in">Office Check-in</Link></li>
                             </ul>
                         </details>
                     </li>

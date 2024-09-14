@@ -9,11 +9,17 @@ export default async function Featured() {
             background: "/history-of-vietnam.jpeg",
             link: "/vietnam-history"
         },
+        {
+            title: "Office Check-in",
+            subtitle: "Am I going to office today?",
+            background: "/offices-in-hcmc.webp",
+            link: "/office-check-in"
+        },
     ]
     return (
         <section>
-            <h2 className="mt-16 text-2xl font-semibold">Featured</h2>
-            <p>Cool Projects/Apps/Tools I have developed.</p>
+            <h2 className="mt-16 text-2xl font-semibold">Hobby Projects</h2>
+            <p>Cool Projects I have developed on Weekends.</p>
             <div className="carousel rounded-box space-x-4 p-4 w-full">
                 {features.map(f =>
                     <div className="carousel-item" key={f.link}><FeaturedCard  {...f}/></div>
