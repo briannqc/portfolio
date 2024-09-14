@@ -55,6 +55,8 @@ function Error(): React.JSX.Element {
 async function fetchOfficeVisits(): Promise<OfficeVisits | undefined> {
     const url = getURL("/api/v1/my-visits/office-visits")
     const res = await fetch(url)
+    console.log("Received status code", res.status, "when calling", url.toString())
+
     if (!res.ok) {
         return undefined
     }
