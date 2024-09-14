@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.9.5",
+    "@vercel/postgres": "^0.10.0",
     "cheerio": "^1.0.0",
     "domhandler": "^5.0.3",
-    "next": "^14.2.8",
+    "next": "^14.2.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-infinite-scroll-component": "^6.1.0",
