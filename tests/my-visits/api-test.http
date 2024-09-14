@@ -1,0 +1,19 @@
+###
+POST http://localhost:3000/api/v1/my-visits/checkin
+Content-Type: application/json
+Accept: application/json
+
+{
+  "location": "OFFICE",
+  "address": "Five Star Tower"
+}
+
+###
+POST http://localhost:3000/api/v1/my-visits/checkout
+Content-Type: application/json
+Accept: application/json
+
+{
+  "location": "OFFICE",
+  "address": "Five Star Tower"
+}
