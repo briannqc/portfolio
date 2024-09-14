@@ -18,8 +18,8 @@ export async function checkOut(place: Place): Promise<boolean> {
 
 async function insertVisitEvent(place: Place, action: Action): Promise<boolean> {
     const {rowCount} = await sql.query(`
-        INSERT INTO portfolio.place_visits(location, address, action)
-        VALUES ('${place.location}', '${place.address}', '${action}')
+        INSERT INTO portfolio.place_visits(place, address, action)
+        VALUES ('${place.place}', '${place.address}', '${action}')
     `);
     return rowCount === 1;
 }
@@ -43,10 +43,10 @@ export async function retrieveOfficeVisits(): Promise<OfficeVisits> {
 async function retrieveEarliestArrivalToOfficeToday(): Promise<DateTime | undefined> {
     const startOfToday = nowInHCMC().startOf('day').toISO()
     const {rowCount, rows} = await sql.query(`
-        SELECT timestamp
+        SELECT at
         FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}' AND timestamp > '${startOfToday}'
-        ORDER BY timestamp
+        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}' AND at > '${startOfToday}'
+        ORDER BY at
         LIMIT 1;
     `);
 
@@ -54,8 +54,8 @@ async function retrieveEarliestArrivalToOfficeToday(): Promise<DateTime | undefi
         return undefined
     }
 
-    const timestampTz = rows[0].timestamp.toISOString()
-    return DateTime.fromISO(timestampTz)
+    const atTz = rows[0].at.toISOString()
+    return DateTime.fromISO(atTz)
 }
 
 function nowInHCMC(): DateTime {
@@ -65,10 +65,10 @@ function nowInHCMC(): DateTime {
 async function retrieveLastDepartureFromOfficeToday(): Promise<DateTime | undefined> {
     const startOfToday = nowInHCMC().startOf('day').toISO()
     const {rowCount, rows} = await sql.query(`
-        SELECT timestamp
+        SELECT at
         FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.LEFT}' AND timestamp > '${startOfToday}'
-        ORDER BY timestamp DESC
+        WHERE place = 'OFFICE' AND action = '${Action.LEFT}' AND at > '${startOfToday}'
+        ORDER BY at DESC
         LIMIT 1;
     `);
 
@@ -76,16 +76,16 @@ async function retrieveLastDepartureFromOfficeToday(): Promise<DateTime | undefi
         return undefined
     }
 
-    const timestampTz = rows[0].timestamp.toISOString()
-    return DateTime.fromISO(timestampTz)
+    const atTz = rows[0].at.toISOString()
+    return DateTime.fromISO(atTz)
 }
 
 async function countVisitsToOfficeThisQuarter(): Promise<number> {
     const startOfQuarter = nowInHCMC().startOf('quarter').toISO()
     const {rowCount, rows} = await sql.query(`
-        SELECT COUNT(DISTINCT DATE_TRUNC('day', timestamp)) AS visit_days
+        SELECT COUNT(DISTINCT DATE_TRUNC('day', at)) AS visit_days
         FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}' AND timestamp > '${startOfQuarter}'
+        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}' AND at > '${startOfQuarter}'
         GROUP BY place;
     `);
 
@@ -97,10 +97,10 @@ async function countVisitsToOfficeThisQuarter(): Promise<number> {
 
 async function retrieveFirstEverArrivalToOffice(): Promise<DateTime | undefined> {
     const {rowCount, rows} = await sql.query(`
-        SELECT timestamp
+        SELECT at
         FROM portfolio.place_visits
         WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}'
-        ORDER BY timestamp
+        ORDER BY at
         LIMIT 1;
     `);
 
@@ -108,6 +108,6 @@ async function retrieveFirstEverArrivalToOffice(): Promise<DateTime | undefined>
         return undefined
     }
 
-    const timestampTz = rows[0].timestamp.toISOString()
-    return DateTime.fromISO(timestampTz)
+    const atTz = rows[0].at.toISOString()
+    return DateTime.fromISO(atTz)
 }

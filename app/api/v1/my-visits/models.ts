@@ -2,7 +2,7 @@ import {DateTime} from "luxon";
 
 
 export type Place = {
-    location: string;
+    place: string;
     address: string;
 }
 
