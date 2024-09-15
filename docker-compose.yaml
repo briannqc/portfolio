@@ -2,8 +2,11 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: verceldb
       POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./scripts/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
       - '54320:5432'
   pg_proxy:
