@@ -72,7 +72,7 @@ function deserializeDataTime(str: any): DateTime | undefined {
     if (str === undefined) {
         return undefined
     }
-    return DateTime.fromISO(str)
+    return DateTime.fromISO(str).setZone('Asia/Ho_Chi_Minh')
 }
 
 

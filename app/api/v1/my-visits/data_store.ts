@@ -25,59 +25,55 @@ async function insertVisitEvent(place: Place, action: Action): Promise<boolean> 
 }
 
 export async function retrieveOfficeVisits(): Promise<OfficeVisits> {
-    const [firstArrival, lastDeparture, visitsCount, trackingSince] = await Promise.all([
-        retrieveEarliestArrivalToOfficeToday(),
-        retrieveLastDepartureFromOfficeToday(),
+    const [{arrivedAt, leftAt}, visitsCount, trackingSince] = await Promise.all([
+        retrieveOfficeVisitsToday(),
         countVisitsToOfficeThisQuarter(),
         retrieveFirstEverArrivalToOffice()
     ])
 
     return {
-        arrivedAt: firstArrival,
-        leftAt: lastDeparture,
+        arrivedAt: arrivedAt,
+        leftAt: leftAt,
         visitCountThisQuarter: visitsCount,
         trackingSince: trackingSince,
     }
 }
 
-async function retrieveEarliestArrivalToOfficeToday(): Promise<DateTime | undefined> {
-    const startOfToday = nowInHCMC().startOf('day').toISO()
+async function retrieveOfficeVisitsToday(): Promise<{ arrivedAt?: DateTime, leftAt?: DateTime }> {
+    const startOfToday = nowInHCMC().startOf('day')
     const {rowCount, rows} = await sql.query(`
-        SELECT at
+        SELECT place, action, at
         FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}' AND at > '${startOfToday}'
-        ORDER BY at
-        LIMIT 1;
+        WHERE place = 'OFFICE'
+          AND at > '${startOfToday.toISO()}'
+        ORDER BY at;
     `);
 
-    if (rowCount === 0) {
-        return undefined
+    if (rowCount === null || rowCount === 0) {
+        return {arrivedAt: undefined, leftAt: undefined}
     }
 
-    const atTz = rows[0].at.toISOString()
-    return DateTime.fromISO(atTz)
+    const firstArrivalTz = rows.find(r => r.action === Action.ARRIVED)?.at
+    if (firstArrivalTz === undefined) {
+        console.log("Bad date on, there are records", rowCount, "but no ARRIVED events on", startOfToday)
+        return {arrivedAt: undefined, leftAt: undefined}
+    }
+
+    const firstArrival = DateTime.fromISO(firstArrivalTz.toISOString())
+
+    const lastRowToday = rows[rowCount - 1]
+    let lastDeparture: DateTime | undefined
+    if (lastRowToday.action === Action.LEFT) {
+        lastDeparture = DateTime.fromISO(lastRowToday.at.toISOString())
+    } else {
+        lastDeparture = undefined
+    }
+
+    return {arrivedAt: firstArrival, leftAt: lastDeparture}
 }
 
 function nowInHCMC(): DateTime {
     return DateTime.now().setZone('Asia/Ho_Chi_Minh')
-}
-
-async function retrieveLastDepartureFromOfficeToday(): Promise<DateTime | undefined> {
-    const startOfToday = nowInHCMC().startOf('day').toISO()
-    const {rowCount, rows} = await sql.query(`
-        SELECT at
-        FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.LEFT}' AND at > '${startOfToday}'
-        ORDER BY at DESC
-        LIMIT 1;
-    `);
-
-    if (rowCount === 0) {
-        return undefined
-    }
-
-    const atTz = rows[0].at.toISOString()
-    return DateTime.fromISO(atTz)
 }
 
 async function countVisitsToOfficeThisQuarter(): Promise<number> {
@@ -85,7 +81,9 @@ async function countVisitsToOfficeThisQuarter(): Promise<number> {
     const {rowCount, rows} = await sql.query(`
         SELECT COUNT(DISTINCT DATE_TRUNC('day', at)) AS visit_days
         FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}' AND at > '${startOfQuarter}'
+        WHERE place = 'OFFICE'
+          AND action = '${Action.ARRIVED}'
+          AND at > '${startOfQuarter}'
         GROUP BY place;
     `);
 
@@ -99,7 +97,8 @@ async function retrieveFirstEverArrivalToOffice(): Promise<DateTime | undefined>
     const {rowCount, rows} = await sql.query(`
         SELECT at
         FROM portfolio.place_visits
-        WHERE place = 'OFFICE' AND action = '${Action.ARRIVED}'
+        WHERE place = 'OFFICE'
+          AND action = '${Action.ARRIVED}'
         ORDER BY at
         LIMIT 1;
     `);
