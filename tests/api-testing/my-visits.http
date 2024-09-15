@@ -1,0 +1,22 @@
+### Check in office
+POST {{host}}/api/v1/my-visits/checkin
+Content-Type: application/json
+Accept: application/json
+
+{
+  "place": "OFFICE",
+  "address": "Five Star Tower"
+}
+
+### Check-out office
+POST {{host}}/api/v1/my-visits/checkout
+Content-Type: application/json
+Accept: application/json
+
+{
+  "place": "OFFICE",
+  "address": "Five Star Tower"
+}
+
+### Retrieve office visits
+GET {{host}}/api/v1/my-visits/office-visits
