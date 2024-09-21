@@ -15,9 +15,12 @@
     "domhandler": "^5.0.3",
     "luxon": "^3.5.0",
     "next": "^14.2.11",
+    "nosleep.js": "^0.12.0",
+    "p5": "^1.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-p5": "^1.4.1",
     "usehooks-ts": "^2.16.0"
   },
   "devDependencies": {
