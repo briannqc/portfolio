@@ -3,7 +3,7 @@ import {OfficeVisits} from "@/app/api/v1/my-visits/models";
 import getURL from "@/utils/getURL";
 import {DateTime} from "luxon";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic"
 
 export default async function OfficeCheckIn(): Promise<React.JSX.Element> {
     const visits = await fetchOfficeVisits()
@@ -19,7 +19,7 @@ export default async function OfficeCheckIn(): Promise<React.JSX.Element> {
             subheading = `I arrived at ${visits.arrivedAt.toLocaleString(DateTime.TIME_24_SIMPLE)}.`
         } else {
             heading = "Yes, I went to office today"
-            subheading = `But, I already left at ${visits.leftAt.toLocaleString(DateTime.TIME_24_SIMPLE)}.`
+            subheading = `And, I already left at ${visits.leftAt.toLocaleString(DateTime.TIME_24_SIMPLE)}.`
         }
     } else {
         heading = "No, I'm not going to office today"
@@ -54,7 +54,7 @@ function Error(): React.JSX.Element {
 
 async function fetchOfficeVisits(): Promise<OfficeVisits | undefined> {
     const url = getURL("/api/v1/my-visits/office-visits")
-    const res = await fetch(url)
+    const res = await fetch(url, {cache: 'no-store'})
     console.log("Received status code", res.status, "when calling", url.toString())
 
     if (!res.ok) {
