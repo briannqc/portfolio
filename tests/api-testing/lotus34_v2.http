@@ -1,4 +1,4 @@
 ### Retrieve list of all provinces
-GET {{host}}/api/lotus34/v1/provinces
+GET {{host}}/api/lotus34/v2/provinces
 Content-Type: application/json
 Accept: application/json
