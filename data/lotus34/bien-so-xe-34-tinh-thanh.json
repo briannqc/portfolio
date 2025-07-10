@@ -1,0 +1,258 @@
+[
+  {
+    "provinceName": "An Giang",
+    "plateCodes": [
+      67,
+      68
+    ]
+  },
+  {
+    "provinceName": "Bắc Ninh",
+    "plateCodes": [
+      98,
+      99
+    ]
+  },
+  {
+    "provinceName": "Cà Mau",
+    "plateCodes": [
+      69,
+      94
+    ]
+  },
+  {
+    "provinceName": "Cần Thơ",
+    "plateCodes": [
+      65,
+      83,
+      95
+    ]
+  },
+  {
+    "provinceName": "Cao Bằng",
+    "plateCodes": [
+      11
+    ]
+  },
+  {
+    "provinceName": "Cục Cảnh sát giao thông",
+    "plateCodes": [
+      80
+    ]
+  },
+  {
+    "provinceName": "Đà Nẵng",
+    "plateCodes": [
+      43,
+      92
+    ]
+  },
+  {
+    "provinceName": "Đắk Lắk",
+    "plateCodes": [
+      47,
+      78
+    ]
+  },
+  {
+    "provinceName": "Điện Biên",
+    "plateCodes": [
+      27
+    ]
+  },
+  {
+    "provinceName": "Đồng Nai",
+    "plateCodes": [
+      39,
+      60,
+      93
+    ]
+  },
+  {
+    "provinceName": "Đồng Tháp",
+    "plateCodes": [
+      63,
+      66
+    ]
+  },
+  {
+    "provinceName": "Gia Lai",
+    "plateCodes": [
+      77,
+      81
+    ]
+  },
+  {
+    "provinceName": "Hà Nội",
+    "plateCodes": [
+      29,
+      30,
+      31,
+      32,
+      33,
+      40
+    ]
+  },
+  {
+    "provinceName": "Hà Tĩnh",
+    "plateCodes": [
+      38
+    ]
+  },
+  {
+    "provinceName": "Hải Phòng",
+    "plateCodes": [
+      15,
+      16,
+      34
+    ]
+  },
+  {
+    "provinceName": "Hồ Chí Minh",
+    "plateCodes": [
+      41,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      72
+    ]
+  },
+  {
+    "provinceName": "Huế",
+    "plateCodes": [
+      75
+    ]
+  },
+  {
+    "provinceName": "Hưng Yên",
+    "plateCodes": [
+      17,
+      89
+    ]
+  },
+  {
+    "provinceName": "Khánh Hòa",
+    "plateCodes": [
+      79,
+      85
+    ]
+  },
+  {
+    "provinceName": "Lai Châu",
+    "plateCodes": [
+      25
+    ]
+  },
+  {
+    "provinceName": "Lâm Đồng",
+    "plateCodes": [
+      48,
+      49,
+      86
+    ]
+  },
+  {
+    "provinceName": "Lạng Sơn",
+    "plateCodes": [
+      12
+    ]
+  },
+  {
+    "provinceName": "Lào Cai",
+    "plateCodes": [
+      21,
+      24
+    ]
+  },
+  {
+    "provinceName": "Nghệ An",
+    "plateCodes": [
+      37
+    ]
+  },
+  {
+    "provinceName": "Ninh Bình",
+    "plateCodes": [
+      18,
+      35,
+      90
+    ]
+  },
+  {
+    "provinceName": "Phú Thọ",
+    "plateCodes": [
+      19,
+      28,
+      88
+    ]
+  },
+  {
+    "provinceName": "Quảng Ngãi",
+    "plateCodes": [
+      76,
+      82
+    ]
+  },
+  {
+    "provinceName": "Quảng Ninh",
+    "plateCodes": [
+      14
+    ]
+  },
+  {
+    "provinceName": "Quảng Trị",
+    "plateCodes": [
+      73,
+      74
+    ]
+  },
+  {
+    "provinceName": "Sơn La",
+    "plateCodes": [
+      26
+    ]
+  },
+  {
+    "provinceName": "Tây Ninh",
+    "plateCodes": [
+      62,
+      70
+    ]
+  },
+  {
+    "provinceName": "Thái Nguyên",
+    "plateCodes": [
+      20,
+      97
+    ]
+  },
+  {
+    "provinceName": "Thanh Hóa",
+    "plateCodes": [
+      36
+    ]
+  },
+  {
+    "provinceName": "Tuyên Quang",
+    "plateCodes": [
+      22,
+      23
+    ]
+  },
+  {
+    "provinceName": "Vĩnh Long",
+    "plateCodes": [
+      64,
+      71,
+      84
+    ]
+  }
+]
