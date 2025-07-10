@@ -1,0 +1,254 @@
+[
+  {
+    "provinceName": "An Giang",
+    "idCardPrefix": "089"
+  },
+  {
+    "provinceName": "Bà Rịa - Vũng Tàu",
+    "idCardPrefix": "077"
+  },
+  {
+    "provinceName": "Bắc Giang",
+    "idCardPrefix": "024"
+  },
+  {
+    "provinceName": "Bắc Kạn",
+    "idCardPrefix": "006"
+  },
+  {
+    "provinceName": "Bạc Liêu",
+    "idCardPrefix": "095"
+  },
+  {
+    "provinceName": "Bắc Ninh",
+    "idCardPrefix": "027"
+  },
+  {
+    "provinceName": "Bến Tre",
+    "idCardPrefix": "083"
+  },
+  {
+    "provinceName": "Bình Định",
+    "idCardPrefix": "052"
+  },
+  {
+    "provinceName": "Bình Dương",
+    "idCardPrefix": "074"
+  },
+  {
+    "provinceName": "Bình Phước",
+    "idCardPrefix": "070"
+  },
+  {
+    "provinceName": "Bình Thuận",
+    "idCardPrefix": "060"
+  },
+  {
+    "provinceName": "Cà Mau",
+    "idCardPrefix": "096"
+  },
+  {
+    "provinceName": "Cần Thơ",
+    "idCardPrefix": "092"
+  },
+  {
+    "provinceName": "Cao Bằng",
+    "idCardPrefix": "004"
+  },
+  {
+    "provinceName": "Đà Nẵng",
+    "idCardPrefix": "048"
+  },
+  {
+    "provinceName": "Đắk Lắk",
+    "idCardPrefix": "066"
+  },
+  {
+    "provinceName": "Đắk Nông",
+    "idCardPrefix": "067"
+  },
+  {
+    "provinceName": "Điện Biên",
+    "idCardPrefix": "011"
+  },
+  {
+    "provinceName": "Đồng Nai",
+    "idCardPrefix": "075"
+  },
+  {
+    "provinceName": "Đồng Tháp",
+    "idCardPrefix": "087"
+  },
+  {
+    "provinceName": "Gia Lai",
+    "idCardPrefix": "064"
+  },
+  {
+    "provinceName": "Hà Giang",
+    "idCardPrefix": "002"
+  },
+  {
+    "provinceName": "Hà Nam",
+    "idCardPrefix": "035"
+  },
+  {
+    "provinceName": "Hà Nội",
+    "idCardPrefix": "001"
+  },
+  {
+    "provinceName": "Hà Tĩnh",
+    "idCardPrefix": "042"
+  },
+  {
+    "provinceName": "Hải Dương",
+    "idCardPrefix": "030"
+  },
+  {
+    "provinceName": "Hải Phòng",
+    "idCardPrefix": "031"
+  },
+  {
+    "provinceName": "Hậu Giang",
+    "idCardPrefix": "093"
+  },
+  {
+    "provinceName": "Hồ Chí Minh",
+    "idCardPrefix": "079"
+  },
+  {
+    "provinceName": "Hòa Bình",
+    "idCardPrefix": "017"
+  },
+  {
+    "provinceName": "Huế",
+    "idCardPrefix": "046"
+  },
+  {
+    "provinceName": "Hưng Yên",
+    "idCardPrefix": "033"
+  },
+  {
+    "provinceName": "Khánh Hòa",
+    "idCardPrefix": "056"
+  },
+  {
+    "provinceName": "Kiên Giang",
+    "idCardPrefix": "091"
+  },
+  {
+    "provinceName": "Kon Tum",
+    "idCardPrefix": "062"
+  },
+  {
+    "provinceName": "Lai Châu",
+    "idCardPrefix": "012"
+  },
+  {
+    "provinceName": "Lâm Đồng",
+    "idCardPrefix": "068"
+  },
+  {
+    "provinceName": "Lạng Sơn",
+    "idCardPrefix": "020"
+  },
+  {
+    "provinceName": "Lào Cai",
+    "idCardPrefix": "010"
+  },
+  {
+    "provinceName": "Long An",
+    "idCardPrefix": "080"
+  },
+  {
+    "provinceName": "Nam Định",
+    "idCardPrefix": "036"
+  },
+  {
+    "provinceName": "Nghệ An",
+    "idCardPrefix": "040"
+  },
+  {
+    "provinceName": "Ninh Bình",
+    "idCardPrefix": "037"
+  },
+  {
+    "provinceName": "Ninh Thuận",
+    "idCardPrefix": "058"
+  },
+  {
+    "provinceName": "Phú Thọ",
+    "idCardPrefix": "025"
+  },
+  {
+    "provinceName": "Phú Yên",
+    "idCardPrefix": "054"
+  },
+  {
+    "provinceName": "Quảng Bình",
+    "idCardPrefix": "044"
+  },
+  {
+    "provinceName": "Quảng Nam",
+    "idCardPrefix": "049"
+  },
+  {
+    "provinceName": "Quảng Ngãi",
+    "idCardPrefix": "051"
+  },
+  {
+    "provinceName": "Quảng Ninh",
+    "idCardPrefix": "022"
+  },
+  {
+    "provinceName": "Quảng Trị",
+    "idCardPrefix": "045"
+  },
+  {
+    "provinceName": "Sóc Trăng",
+    "idCardPrefix": "094"
+  },
+  {
+    "provinceName": "Sơn La",
+    "idCardPrefix": "014"
+  },
+  {
+    "provinceName": "Tây Ninh",
+    "idCardPrefix": "072"
+  },
+  {
+    "provinceName": "Thái Bình",
+    "idCardPrefix": "034"
+  },
+  {
+    "provinceName": "Thái Nguyên",
+    "idCardPrefix": "019"
+  },
+  {
+    "provinceName": "Thanh Hóa",
+    "idCardPrefix": "038"
+  },
+  {
+    "provinceName": "Tiền Giang",
+    "idCardPrefix": "082"
+  },
+  {
+    "provinceName": "Trà Vinh",
+    "idCardPrefix": "084"
+  },
+  {
+    "provinceName": "Tuyên Quang",
+    "idCardPrefix": "008"
+  },
+  {
+    "provinceName": "Vĩnh Long",
+    "idCardPrefix": "086"
+  },
+  {
+    "provinceName": "Vĩnh Phúc",
+    "idCardPrefix": "026"
+  },
+  {
+    "provinceName": "Yên Bái",
+    "idCardPrefix": "015"
+  }
+]

@@ -4,17 +4,22 @@ import path from 'path';
 async function loadAndMergeProvincesData() {
     const [
         provinces,
+        idCardPrefixes,
         areasAndPopulations,
         vehiclePlateCodes,
         telephoneCodes
     ] = await Promise.all([
-        loadJSONFromFile('danh-sach-3321-xa-phuong.json'),
+        loadJSONFromFile('./danh-sach-3321-xa-phuong.json'),
+        loadJSONFromFile('./ma-can-cuoc-63-tinh-thanh.json'),
         loadJSONFromFile('./dien-tich-va-dan-so-34-tinh-thanh.json'),
         loadJSONFromFile('./bien-so-xe-34-tinh-thanh.json'),
         loadJSONFromFile('./ma-vung-dien-thoai-34-tinh-thanh.json')
     ])
 
     provinces.forEach(province => {
+        const idCardPrefix = idCardPrefixes.find(e => isSameVietnameseName(e.provinceName, province.name))
+        province.idCardPrefix = idCardPrefix.idCardPrefix
+
         const areaAndPopulation = areasAndPopulations.find(e => isSameVietnameseName(e.provinceName, province.name))
         province.areaInKm2 = areaAndPopulation.areaInKm2
         province.population = areaAndPopulation.population
