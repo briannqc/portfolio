@@ -2,3 +2,13 @@
 GET {{host}}/api/lotus34/v2/provinces
 Content-Type: application/json
 Accept: application/json
+
+### Retrieve province by code
+GET {{host}}/api/lotus34/v2/provinces/01
+Content-Type: application/json
+Accept: application/json
+
+### Retrieve list off all communes by province code
+GET {{host}}/api/lotus34/v2/provinces/01/communes
+Content-Type: application/json
+Accept: application/json
