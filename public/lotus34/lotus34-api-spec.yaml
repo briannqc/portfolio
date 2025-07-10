@@ -1,0 +1,624 @@
+openapi: 3.0.0
+info:
+  version: 2.1.0
+  title: Collections API
+  description: Collections API
+paths:
+  ## #####################################
+  ## Posts
+  ## #####################################
+  /api/v1/posts:
+    get:
+      summary: Get posts
+      description: Returns a list of posts with at least one content in the published status.
+      operationId: getPosts
+      parameters:
+        - $ref: '#/components/parameters/language'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  posts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/postResponse'
+      security:
+        - apiKeyAuth: []
+
+  /api/v1/post/{id}:
+    get:
+      summary: Get post
+      description: Returns a post with at least one content in published status.
+      operationId: getPost
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/language'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post:
+                    $ref: '#/components/schemas/postResponse'
+      security:
+        - apiKeyAuth: []
+
+  ## #####################################
+  ## Contents
+  ## #####################################
+  /api/v1/contents/{identifier}:
+    get:
+      summary: Get content
+      description: Returns content that is in a published state. Additionally, it provides a JSON‑LD formatted response for enhanced author SEO.
+      operationId: getContent
+      parameters:
+        - $ref: '#/components/parameters/identifier'
+        - $ref: '#/components/parameters/draftKey'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    $ref: '#/components/schemas/contentResponse'
+                  jsonLd:
+                    $ref: '#/components/schemas/contentByJsonLd'
+      security:
+        - apiKeyAuth: []
+
+  ## #####################################
+  ## Tags
+  ## #####################################
+  /api/v1/tags/{tagName}/contents:
+    get:
+      summary: Get tag contents
+      description: Returns a list of tagged contents.
+      operationId: getTagContents
+      parameters:
+        - $ref: '#/components/parameters/tagName'
+        - $ref: '#/components/parameters/language'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/listContentResponse'
+      security:
+        - apiKeyAuth: []
+
+  ## #####################################
+  ## Users
+  ## #####################################
+  /api/v1/users/{id}/contents:
+    get:
+      summary: Get user contents
+      description: Returns a list of the authors's contents.
+      operationId: getUserContents
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/listContentResponse'
+      security:
+        - apiKeyAuth: []
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: uuid
+
+  parameters:
+    id:
+      name: id
+      in: path
+      description: Primary Key (UUID)
+      example: 'a8c4891c-6bc0-4f58-81c6-5e89bb572d4c'
+      required: true
+      schema:
+        $ref: '#/components/schemas/id'
+    identifier:
+      name: identifier
+      in: path
+      description: Id or Slug
+      examples:
+        id:
+          summary: Id
+          value: 'a8c4891c-6bc0-4f58-81c6-5e89bb572d4c'
+        slug:
+          summary: Slug
+          value: 'my-first-post'
+      required: true
+      schema:
+        type: string
+    tagName:
+      name: tagName
+      in: path
+      description: Tag name
+      example: 'seo'
+      required: true
+      schema:
+        type: string
+    language:
+      name: language
+      in: query
+      description: Lowercase language code
+      example: 'en-us'
+      schema:
+        $ref: '#/components/schemas/id'
+    draftKey:
+      name: draftKey
+      in: query
+      description: Key to fetch draft content
+      example: 'c486dc26c7'
+      schema:
+        type: string
+
+  schemas:
+    ## #####################################
+    ## Properties
+    ## #####################################
+    id:
+      description: Primary Key (UUID)
+      example: 'a8c4891c-6bc0-4f58-81c6-5e89bb572d4c'
+      type: string
+    slug:
+      description: Slug
+      example: 'my-first-post'
+      type: string
+    title:
+      description: Title
+      example: 'This is a title'
+      type: string
+    subtitle:
+      description: Subtitle
+      example: 'This is a subtitle'
+      type: string
+    body:
+      description: Body
+      example: 'This is a body'
+      type: string
+    bodyHtml:
+      description: Body HTML
+      example: '<p>This is a body</p>'
+      type: string
+    status:
+      description: Status
+      example: 'published'
+      type: string
+    language:
+      description: Lowercase language code
+      example: 'en-us'
+      type: string
+    version:
+      description: Version
+      example: 1
+      type: integer
+    coverUrl:
+      description: Cover URL
+      example: 'https://your-subdomain.collections.dev/assets/a8c4891c-6bc0-4f58-81c6-5e89bb572d4c'
+      type: string
+    metaTitle:
+      description: Seo title
+      example: 'This is a meta title'
+      type: string
+    metaDescription:
+      description: Seo description
+      example: 'This is a meta description'
+      type: string
+    publishedAt:
+      description: Date the version of the post was published
+      example: '2023-09-29T00:53:20.604Z'
+      type: string
+    author:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          description: Name
+          example: 'John Doe'
+          type: string
+        avatarUrl:
+          description: Avatar URL
+          example: 'https://your-subdomain.collections.dev/assets/a8c4891c-6bc0-4f58-81c6-5e89bb572d4c'
+          type: string
+        bio:
+          description: 'Used as Person.description in JSON-LD'
+          example: 'This is a bio'
+          type: string
+        bioUrl:
+          description: 'Used as Person.sameAs in JSON-LD'
+          example: 'https://john-doe.com'
+          type: string
+        employer:
+          description: 'Used as worksFor in JSON-LD'
+          example: 'John Doe Inc.'
+          type: string
+    authorWithProfile:
+      allOf:
+        - $ref: '#/components/schemas/author'
+        - type: object
+          properties:
+            spokenLanguages:
+              type: array
+              description: 'Used as knowsLanguage in JSON-LD'
+              items:
+                type: object
+                required:
+                  - language
+                properties:
+                  language:
+                    description: language
+                    example: 'en-us'
+                    type: string
+            awards:
+              type: array
+              description: 'Used as award in JSON-LD'
+              items:
+                type: object
+                required:
+                  - name
+                properties:
+                  name:
+                    description: Name
+                    example: 'Award Name'
+                    type: string
+            socialProfiles:
+              type: array
+              description: 'Used as Person.sameAs in JSON-LD'
+              items:
+                type: object
+                required:
+                  - platform
+                  - url
+                properties:
+                  platform:
+                    description: Platform
+                    example: 'x'
+                    type: string
+                  url:
+                    description: URL
+                    example: 'https://x.com/john-doe'
+                    type: string
+            alumni:
+              type: array
+              description: 'Used as alumniOf in JSON-LD'
+              items:
+                type: object
+                required:
+                  - name
+                  - url
+                properties:
+                  name:
+                    description: Name
+                    example: 'Alumnus Name'
+                    type: string
+                  url:
+                    description: URL
+                    example: 'https://alumnus.com'
+                    type: string
+            experiences:
+              type: array
+              description: 'Used as knowsAbout in JSON-LD'
+              items:
+                type: object
+                required:
+                  - name
+                  - url
+                  - responses
+                properties:
+                  name:
+                    description: Name
+                    example: 'Experience Name'
+                    type: string
+                  url:
+                    description: URL
+                    example: 'https://experience.com'
+                    type: string
+                  responses:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - url
+                      properties:
+                        url:
+                          description: URL
+                          example: 'https://response.com'
+                          type: string
+    tags:
+      type: array
+      items:
+        type: object
+        required:
+          - id
+          - name
+        properties:
+          id:
+            $ref: '#/components/schemas/id'
+          name:
+            description: Name
+            example: 'Tag Name'
+            type: string
+
+    ## #####################################
+    ## Post
+    ## #####################################
+    postResponse:
+      type: object
+      required:
+        - id
+        - contents
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        contents:
+          type: array
+          items:
+            $ref: '#/components/schemas/listContentResponse'
+
+    ## #####################################
+    ## Content
+    ## #####################################
+    contentResponse:
+      type: object
+      description: Content
+      required:
+        - id
+        - slug
+        - title
+        - body
+        - bodyHtml
+        - status
+        - language
+        - version
+        - publishedAt
+        - author
+        - tags
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        slug:
+          $ref: '#/components/schemas/slug'
+        title:
+          $ref: '#/components/schemas/title'
+        subtitle:
+          $ref: '#/components/schemas/subtitle'
+        body:
+          $ref: '#/components/schemas/body'
+        bodyHtml:
+          $ref: '#/components/schemas/bodyHtml'
+        status:
+          $ref: '#/components/schemas/status'
+        language:
+          $ref: '#/components/schemas/language'
+        version:
+          $ref: '#/components/schemas/version'
+        coverUrl:
+          $ref: '#/components/schemas/coverUrl'
+        metaTitle:
+          $ref: '#/components/schemas/metaTitle'
+        metaDescription:
+          $ref: '#/components/schemas/metaDescription'
+        publishedAt:
+          $ref: '#/components/schemas/publishedAt'
+        author:
+          $ref: '#/components/schemas/authorWithProfile'
+        tags:
+          $ref: '#/components/schemas/tags'
+
+    listContentResponse:
+      type: object
+      description: List content
+      required:
+        - id
+        - slug
+        - title
+        - body
+        - bodyHtml
+        - status
+        - language
+        - version
+        - publishedAt
+        - author
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        slug:
+          $ref: '#/components/schemas/slug'
+        title:
+          $ref: '#/components/schemas/title'
+        subtitle:
+          $ref: '#/components/schemas/subtitle'
+        body:
+          $ref: '#/components/schemas/body'
+        bodyHtml:
+          $ref: '#/components/schemas/bodyHtml'
+        status:
+          $ref: '#/components/schemas/status'
+        language:
+          $ref: '#/components/schemas/language'
+        version:
+          $ref: '#/components/schemas/version'
+        coverUrl:
+          $ref: '#/components/schemas/coverUrl'
+        metaTitle:
+          $ref: '#/components/schemas/metaTitle'
+        metaDescription:
+          $ref: '#/components/schemas/metaDescription'
+        publishedAt:
+          $ref: '#/components/schemas/publishedAt'
+        author:
+          $ref: '#/components/schemas/author'
+
+    ## #####################################
+    ## JSON-LD
+    ## #####################################
+    contentByJsonLd:
+      type: object
+      description: JSON-LD
+      properties:
+        '@type':
+          type: string
+          example: 'BlogPosting'
+        '@context':
+          type: string
+          example: 'https://schema.org'
+        name:
+          type: string
+          example: 'This is a title'
+        datePublished:
+          type: string
+          example: '2023-09-29T00:53:20.604Z'
+        dateModified:
+          type: string
+          example: '2023-09-29T00:53:20.604Z'
+        description:
+          type: string
+          example: 'This is a description'
+        inLanguage:
+          type: string
+          example: 'en-us'
+        articleSection:
+          type: array
+          items:
+            type: string
+          example: ['Technology', 'Software Development']
+        author:
+          type: object
+          properties:
+            '@type':
+              type: string
+              example: 'Person'
+            name:
+              type: string
+              example: 'John Doe'
+            description:
+              type: string
+              example: 'This is a bio'
+            image:
+              type: object
+              properties:
+                '@type':
+                  type: string
+                  example: 'ImageObject'
+                url:
+                  type: string
+                  example: 'https://john-doe.com/avatar.jpg'
+            jobTitle:
+              type: string
+              example: 'Software Engineer'
+            worksFor:
+              type: object
+              properties:
+                '@type':
+                  type: string
+                  example: 'Organization'
+                name:
+                  type: string
+                  example: 'John Doe Inc.'
+            knowsLanguage:
+              type: array
+              items:
+                type: object
+                properties:
+                  '@type':
+                    type: string
+                    example: 'Language'
+                  name:
+                    type: string
+                    example: 'English'
+            award:
+              type: array
+              items:
+                type: string
+              example: ['Award 1', 'Award 2']
+            sameAs:
+              type: array
+              items:
+                type: string
+              example: ['https://x.com/john-doe', 'https://linkedin.com/in/john-doe']
+            alumniOf:
+              type: array
+              items:
+                type: object
+                properties:
+                  '@type':
+                    type: string
+                    example: 'EducationalOrganization'
+                  name:
+                    type: string
+                    example: 'Alumni Name'
+                  url:
+                    type: string
+                    example: 'https://alumni.com'
+            knowsAbout:
+              type: array
+              items:
+                type: object
+                properties:
+                  '@type':
+                    type: string
+                    example: 'Thing'
+                  name:
+                    type: string
+                    example: 'Knowledge about'
+                  url:
+                    type: string
+                    example: 'https://knowledge.com'
+                  sameAs:
+                    type: array
+                    items:
+                      type: string
+                      example: 'https://response.com'
+        mainEntityOfPage:
+          type: object
+          properties:
+            '@type':
+              type: string
+              example: 'WebPage'
+            name:
+              type: string
+              example: 'This is a title'
+            description:
+              type: string
+              example: 'This is a description'
+            inLanguage:
+              type: string
+              example: 'en-us'
+            datePublished:
+              type: string
+              example: '2023-09-29T00:53:20.604Z'
+            dateModified:
+              type: string
+              example: '2023-09-29T00:53:20.604Z'
