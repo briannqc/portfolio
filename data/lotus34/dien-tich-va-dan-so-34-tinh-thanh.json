@@ -1,0 +1,206 @@
+[
+  {
+    "provinceName": "An Giang",
+    "areaInKm2": 9888.9,
+    "population": 3679200,
+    "administrativeCenter": "TP. Rạch Giá"
+  },
+  {
+    "provinceName": "Bắc Ninh",
+    "areaInKm2": 4718.6,
+    "population": 3509100,
+    "administrativeCenter": "TP. Bắc Giang"
+  },
+  {
+    "provinceName": "Cà Mau",
+    "areaInKm2": 7942.4,
+    "population": 2140600,
+    "administrativeCenter": "TP. Cà Mau"
+  },
+  {
+    "provinceName": "Cần Thơ",
+    "areaInKm2": 6360.8,
+    "population": 3207000,
+    "administrativeCenter": "Quận Ninh Kiều"
+  },
+  {
+    "provinceName": "Cao Bằng",
+    "areaInKm2": 6700.39,
+    "population": 543050,
+    "administrativeCenter": "TP. Cao Bằng"
+  },
+  {
+    "provinceName": "Đà Nẵng",
+    "areaInKm2": 1284.73,
+    "population": 1220.19,
+    "administrativeCenter": "Quận Hải Châu"
+  },
+  {
+    "provinceName": "Đắk Lắk",
+    "areaInKm2": 18096.4,
+    "population": 2831300,
+    "administrativeCenter": "TP. Buôn Ma Thuột"
+  },
+  {
+    "provinceName": "Điện Biên",
+    "areaInKm2": 9539.93,
+    "population": 633980,
+    "administrativeCenter": "TP. Điện Biên Phủ"
+  },
+  {
+    "provinceName": "Đồng Nai",
+    "areaInKm2": 12737.2,
+    "population": 4427700,
+    "administrativeCenter": "TP. Biên Hòa"
+  },
+  {
+    "provinceName": "Đồng Tháp",
+    "areaInKm2": 5938.7,
+    "population": 3397200,
+    "administrativeCenter": "TP. Mỹ Tho"
+  },
+  {
+    "provinceName": "Gia Lai",
+    "areaInKm2": 21576.5,
+    "population": 3153300,
+    "administrativeCenter": "TP. Quy Nhơn"
+  },
+  {
+    "provinceName": "Hà Nội",
+    "areaInKm2": 3359.84,
+    "population": 8435650,
+    "administrativeCenter": "Quận Hoàn Kiếm"
+  },
+  {
+    "provinceName": "Hà Tĩnh",
+    "areaInKm2": 5994.45,
+    "population": 1317.2,
+    "administrativeCenter": "TP. Hà Tĩnh"
+  },
+  {
+    "provinceName": "Hải Phòng",
+    "areaInKm2": 3194.7,
+    "population": 4102700,
+    "administrativeCenter": "TP. Thủy Nguyên"
+  },
+  {
+    "provinceName": "Hồ Chí Minh",
+    "areaInKm2": 6772.6,
+    "population": 13608800,
+    "administrativeCenter": "Quận 1"
+  },
+  {
+    "provinceName": "Huế",
+    "areaInKm2": 4947.11,
+    "population": 1160220,
+    "administrativeCenter": "Quận Phú Xuân, Thuận Hóa"
+  },
+  {
+    "provinceName": "Hưng Yên",
+    "areaInKm2": 4718.6,
+    "population": 3509100,
+    "administrativeCenter": "TP. Hưng Yên"
+  },
+  {
+    "provinceName": "Khánh Hoà",
+    "areaInKm2": 8555.9,
+    "population": 1882000,
+    "administrativeCenter": "TP. Nha Trang"
+  },
+  {
+    "provinceName": "Lai Châu",
+    "areaInKm2": 9068.73,
+    "population": 482100,
+    "administrativeCenter": "TP. Lai Châu"
+  },
+  {
+    "provinceName": "Lâm Đồng",
+    "areaInKm2": 24233.1,
+    "population": 3324400,
+    "administrativeCenter": "TP. Đà Lạt"
+  },
+  {
+    "provinceName": "Lạng Sơn",
+    "areaInKm2": 8310.18,
+    "population": 802090,
+    "administrativeCenter": "TP. Lạng Sơn"
+  },
+  {
+    "provinceName": "Lào Cai",
+    "areaInKm2": 13257,
+    "population": 1656500,
+    "administrativeCenter": "TP. Yên Bái"
+  },
+  {
+    "provinceName": "Nghệ An",
+    "areaInKm2": 16486.49,
+    "population": 3416900,
+    "administrativeCenter": "TP. Vinh"
+  },
+  {
+    "provinceName": "Ninh Bình",
+    "areaInKm2": 3942.6,
+    "population": 3818700,
+    "administrativeCenter": "TP. Hoa Lư"
+  },
+  {
+    "provinceName": "Phú Thọ",
+    "areaInKm2": 9361.4,
+    "population": 3663600,
+    "administrativeCenter": "TP. Việt Trì"
+  },
+  {
+    "provinceName": "Quảng Ngãi",
+    "areaInKm2": 11859.6,
+    "population": 2819900,
+    "administrativeCenter": "TP. Quảng Ngãi"
+  },
+  {
+    "provinceName": "Quảng Ninh",
+    "areaInKm2": 6207.93,
+    "population": "1.362.88",
+    "administrativeCenter": "TP. Hạ Long"
+  },
+  {
+    "provinceName": "Quảng Trị",
+    "areaInKm2": 12700,
+    "population": 1584000,
+    "administrativeCenter": "TP. Đồng Hới"
+  },
+  {
+    "provinceName": "Sơn La",
+    "areaInKm2": 14109.83,
+    "population": 1300130,
+    "administrativeCenter": "TP. Sơn La"
+  },
+  {
+    "provinceName": "Tây Ninh",
+    "areaInKm2": 8536.5,
+    "population": 2959000,
+    "administrativeCenter": "TP. Tây Ninh"
+  },
+  {
+    "provinceName": "Thái Nguyên",
+    "areaInKm2": 8375.3,
+    "population": 1694500,
+    "administrativeCenter": "TP. Thái Nguyên"
+  },
+  {
+    "provinceName": "Thanh Hóa",
+    "areaInKm2": 11114.71,
+    "population": 3722060,
+    "administrativeCenter": "TP. Thanh Hóa"
+  },
+  {
+    "provinceName": "Tuyên Quang",
+    "areaInKm2": 13795.6,
+    "population": 1731600,
+    "administrativeCenter": "TP. Tuyên Quang"
+  },
+  {
+    "provinceName": "Vĩnh Long",
+    "areaInKm2": 6296.2,
+    "population": 3367400,
+    "administrativeCenter": "TP. Vĩnh Long"
+  }
+]

@@ -6,7 +6,7 @@ function normalizeString(str) {
     return str.trim().split(/\s+/).join(' ');
 }
 
-async function loadTelephoneCodesFromXlsx() {
+async function loadVehiclePlateCodesFromXlsx() {
     const workbook = new ExcelJS.Workbook();
     const filePath = path.resolve('./bien-so-xe-34-tinh-thanh.xlsx');
     await workbook.xlsx.readFile(filePath)
@@ -54,7 +54,7 @@ function parseRawPlateCodes(rawPlateCodes) {
 }
 
 async function run() {
-    const telephoneCodes = await loadTelephoneCodesFromXlsx()
+    const telephoneCodes = await loadVehiclePlateCodesFromXlsx()
     const jsonFilePath = path.resolve('./bien-so-xe-34-tinh-thanh.json');
     const json = JSON.stringify(telephoneCodes, null, 2);
     await writeFile(jsonFilePath, json, 'utf8');
