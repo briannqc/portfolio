@@ -1,0 +1,219 @@
+openapi: 3.1.0
+info:
+  title: 🪷 Lotus34 API — Vietnam’s New Provincial Gateway
+  description: |-
+    As of July 1st, 2025, Vietnam underwent a sweeping administrative transformation, consolidating its 63 provinces
+    into 34 and streamlining its governance structure from three tiers—province, district, and commune—to just two:
+    province and commune. This landmark reform, the most significant in centuries, marks a bold leap toward
+    modernization and administrative efficiency.
+
+    Lotus34 is a RESTful API purpose-built to deliver core information about Vietnam's newly defined provinces.
+    It provides:
+
+    📍 Province Details: Official names, areas and populations
+
+    🆔 ID Card Region Codes: Region codes tied to each province
+
+    🚗 Vehicle Plate Numbers: License plate code ranges per province
+
+    ☎️ Telephone area code: Landed telephone code per province
+
+    🏘️ Child Communes: A full list of communes within each province
+    
+    Whether you're building data visualizations, powering location-based services, or integrating national datasets,
+    Lotus34 is your gateway to Vietnam’s revolutionary new provincial structure.
+  version: 2.0.0
+  contact:
+    name: Ngo Quoc Cuong
+    url: https://nqc.io.vn
+    email: brian.nqc2023@gmail.com
+servers:
+  - url: 'https://nqc.io.vn/api/lotus34/v2'
+paths:
+  /provinces:
+    get:
+      summary: List all 34 provinces
+      operationId: listProvinces
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListProvincesResponse"
+  /provinces/{code}:
+    get:
+      summary: Get a single province by code
+      operationId: getProvinceByCode
+      parameters:
+        - $ref: "#/components/parameters/ProvinceCode"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetProvinceResponse"
+        404:
+          description: Province with given code not found. Call GET /provinces to retrieve all province codes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundResponse"
+  /provinces/{code}/communes:
+    get:
+      summary: List all communes of the given province determined by code
+      operationId: listCommunesByProvinceCode
+      parameters:
+        - $ref: "#/components/parameters/ProvinceCode"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListCommunesResponse"
+        404:
+          description: Province with given code not found. Call GET /provinces to retrieve all province codes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundResponse"
+components:
+  parameters:
+    ProvinceCode:
+      name: code
+      in: path
+      description: Province code usually contains 2 digits to identify the province
+      required: true
+      schema:
+        type: string
+        example: "01"
+  schemas:
+    NotFoundResponse:
+      type: object
+    ResponseMeta:
+      description: Response metadata such as size, pagination, and human readable messages
+      type: object
+      properties:
+        size:
+          type: integer
+          description: Size of response data when it is an array
+          example: 1
+    ListProvincesResponse:
+      type: object
+      properties:
+        meta:
+          $ref: "#/components/schemas/ResponseMeta"
+        data:
+          $ref: "#/components/schemas/Provinces"
+    GetProvinceResponse:
+      type: object
+      properties:
+        meta:
+          $ref: "#/components/schemas/ResponseMeta"
+        data:
+          $ref: "#/components/schemas/Province"
+    ListCommunesResponse:
+      type: object
+      properties:
+        meta:
+          $ref: "#/components/schemas/ResponseMeta"
+        data:
+          $ref: "#/components/schemas/Communes"
+    Provinces:
+      type: array
+      items:
+        $ref: "#/components/schemas/Province"
+      examples:
+        hanoi:
+          $ref: "#/components/examples/ProvinceExample"
+    Province:
+      description: Represents a province level administrative unit
+      type: object
+      properties:
+        code:
+          type: string
+          description: Province code
+          example: "01"
+        name:
+          type: string
+          description: Province name in Vietnamese excluding the province type
+          example: "Hà Nội"
+        type:
+          type: string
+          enum: [ "Thành phố", "Tỉnh" ]
+          example: "Thành phố"
+        fullName:
+          type: string
+          description: Province name prefixed by its type, useful for displaying purpose
+          example: "Thành phố Hà Nội"
+        idCardPrefix:
+          type: string
+          description: The first 3 digits of identity cards issued in this province
+          example: "001"
+        areaInKm2:
+          type: number
+          format: float
+          description: Area of this province in square km
+          example: 3359.84
+        population:
+          type: integer
+          description: Population of this province
+          example: 8435650
+        vehiclePlateCodes:
+          type: array
+          items:
+            type: integer
+          description: All vehicle plate codes allocated to this province
+          example: [ 29, 30 ]
+        telephoneCode:
+          type: integer
+          description: Landed phone are code without "0" prefix
+          example: 24
+    Communes:
+      type: array
+      items:
+        $ref: "#/components/schemas/Commune"
+      examples:
+        hanoi:
+          $ref: "#/components/examples/CommuneExample"
+    Commune:
+      description: Represents a commune level administrative unit
+      type: object
+      properties:
+        code:
+          type: string
+          description: 'Nationally unique Commune code as stated in 1656/NQ-UBTVQH15'
+          example: "00004"
+        name:
+          type: string
+          description: Commune name in Vietnamese excluding the commune type
+          example: "Ba Đình"
+        type:
+          type: string
+          enum: [ "Xã", "Phường", "Đặc khu" ]
+          example: "Phường"
+        fullName:
+          type: string
+          description: Commune name prefixed by its type, useful for displaying purpose
+          example: "Phường Ba Đình"
+  examples:
+    ProvinceExample:
+      summary: "Hà Nội as a province example"
+      value:
+        code: "01"
+        name: "Hà Nội"
+        fullName: "Thành phố Hà Nội"
+        idCardPrefix: "001"
+        areaInKm2: 3359.84
+        population: 8435650
+        vehiclePlateCodes: [ 29, 30 ]
+        telephoneCode: 24
+    CommuneExample:
+      summary: "Ba Đình as a commune level unit in Hà Nội"
+      value:
+        code: "00004"
+        name: "Ba Đình"
+        type: "Phường"
+        fullName: "Phường Ba Đình"
