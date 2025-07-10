@@ -10,9 +10,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /*
+    Temporarily set dark mode colors same as light mode as redocly api spec
+    displays very purely in current dark mode background.
+    TODO: Find better background for dark mode, or remove dark mode entirely
+    */
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
