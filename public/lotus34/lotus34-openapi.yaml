@@ -28,10 +28,10 @@ info:
     url: https://nqc.io.vn
     email: brian.nqc2023@gmail.com
 servers:
-  - url: 'http://localhost:3000/api/lotus34/v2'
-    description: Local
   - url: 'https://nqc.io.vn/api/lotus34/v2'
     description: Production
+  - url: 'http://localhost:3000/api/lotus34/v2'
+    description: Local
 paths:
   /provinces:
     get:
