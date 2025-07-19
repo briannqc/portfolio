@@ -1,8 +1,8 @@
 "use client"
 
-import {RedocStandalone} from 'redoc'
+import SwaggerUI from "swagger-ui-react"
+import "swagger-ui-react/swagger-ui.css"
 
-export default function RedocLotus34() {
-    return <RedocStandalone specUrl="/lotus34/lotus34-api-spec.yaml"/>
+export default function Lotus34SwaggerUI() {
+    return <SwaggerUI url="/lotus34/lotus34-openapi.yaml" />
 }
-
