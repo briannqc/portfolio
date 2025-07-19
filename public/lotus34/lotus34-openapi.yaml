@@ -109,11 +109,11 @@ components:
     Limit:
       name: limit
       in: query
-      description: "Limit, or page size for responses of List APIs which support pagination, default: 100"
+      description: "Limit, or page size for responses of List APIs which support pagination, default: 200, max: 500"
       required: false
       schema:
         type: integer
-        example: 100
+        example: 200
     ProvinceCode:
       name: code
       in: path
@@ -143,10 +143,10 @@ components:
           type: integer
           description: The current zero-indexed page number
           example: 0
-        size:
+        total:
           type: integer
-          description: The current page size
-          example: 100
+          description: The total records on current page
+          example: 200
         previousPage:
           type: integer
           description: The previous zero-indexed page number, null if current page is the first page
