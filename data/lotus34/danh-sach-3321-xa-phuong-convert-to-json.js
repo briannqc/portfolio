@@ -31,14 +31,23 @@ async function loadCommunesFromXlsx() {
     return communes;
 }
 
+/**
+ * splitCommuneName splits commune name from its full name with type.
+ *
+ * Examples:
+ *   - "Xã Chương Dương" => "Chương Dương"
+ *   - "Phường Ba Đình" => "Ba Đình"
+ *   - "Đặc khu Vân Đồn" => "Vân Đồn"
+ */
 function splitCommuneName(communeFullName) {
-    if (communeFullName.startsWith('Xã')) {
-        return communeFullName.substring('Xã '.length)
+    const words = communeFullName.split(/\s+/)
+    if (words[0].toLowerCase() === 'xã') {
+        return words.slice(1).join(" ")
     }
-    if (communeFullName.startsWith('Phường')) {
-        return communeFullName.substring('Phường '.length)
+    if (words[0].toLowerCase() === 'phường') {
+        return words.slice(1).join(" ")
     }
-    return communeFullName.substring('Đặc khu '.length)
+    return words.slice(2).join(" ")
 }
 
 function transformCommunesToProvinces(communes) {
@@ -71,14 +80,19 @@ function transformCommunesToProvinces(communes) {
     return provinces
 }
 
+/**
+ * splitProvinceTypeAndName splits province name from its full name with type.
+ *
+ * Examples:
+ *   - "Tỉnh Quảng Ninh" => ["Tỉnh", "Quảng Ninh"]
+ *   - "Thành phố Hồ Chí Minh" => ["Thành phố", "Hồ Chí Minh"]
+ */
 function splitProvinceTypeAndName(provinceFullName) {
-    if (provinceFullName.startsWith('Thành phố')) {
-        const provinceName = provinceFullName.substring('Thành phố '.length)
-        return ["Thành phố", provinceName]
+    const words = provinceFullName.split(/\s+/)
+    if (words[0].toLowerCase() === 'tỉnh') {
+        return ["Tỉnh", words.slice(1).join(" ")]
     }
-
-    const provinceName = provinceFullName.substring('Tỉnh '.length)
-    return ["Tỉnh", provinceName]
+    return ["Thành phố", words.slice(2).join(" ")]
 }
 
 async function run() {
