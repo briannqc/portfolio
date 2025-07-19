@@ -48,14 +48,18 @@ type Commune = {
     name: string
     type: string
     fullName: string
+    provinceCode: string
+    provinceFullName: string
 }
 
-function newCommune(c: any): Commune {
+function newCommune(c: any, provinceCode: string, provinceFullName: string): Commune {
     return {
         code: c.code,
         name: c.name,
         type: c.type,
-        fullName: `${c.type} ${c.name}`
+        fullName: `${c.type} ${c.name}`,
+        provinceCode: provinceCode,
+        provinceFullName: provinceFullName,
     }
 }
 
@@ -108,7 +112,9 @@ export class ProvinceDataStore {
         if (record === undefined) {
             return undefined
         }
-        return record.communes.map(c => newCommune(c))
+        const provinceCode = record.code
+        const provinceFullName = `${record.type} ${record.name}`
+        return record.communes.map(c => newCommune(c, provinceCode, provinceFullName))
     }
 
     listCommunesByProvinceName(name: string): Commune[] | undefined {
@@ -116,6 +122,8 @@ export class ProvinceDataStore {
         if (record === undefined) {
             return undefined
         }
-        return record.communes.map(c => newCommune(c))
+        const provinceCode = record.code
+        const provinceFullName = `${record.type} ${record.name}`
+        return record.communes.map(c => newCommune(c, provinceCode, provinceFullName))
     }
 }
