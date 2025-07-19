@@ -82,8 +82,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFoundResponse"
+  /communes:
+    get:
+      summary: List 3321 communes across 34 provinces in Vietnam page by page
+      operationId: listCommunes
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListCommunesResponse"
 components:
   parameters:
+    Page:
+      name: page
+      in: query
+      description: "Zero-indexed page number for List APIs which support pagination, default: 0"
+      required: false
+      schema:
+        type: integer
+        example: 0
+    Limit:
+      name: limit
+      in: query
+      description: "Limit, or page size for responses of List APIs which support pagination, default: 100"
+      required: false
+      schema:
+        type: integer
+        example: 100
     ProvinceCode:
       name: code
       in: path
@@ -96,34 +126,56 @@ components:
     NotFoundResponse:
       type: object
     ResponseMeta:
-      description: Response metadata such as size, pagination, and human readable messages
+      description: Response metadata such programmable error codes and human readable messages
       type: object
       properties:
+        message:
+          type: string
+          description: Human readable message
+          example: Operation successful
+    ListResponseMeta:
+      description: Response metadata such as size, pagination, and human readable messages
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ResponseMeta"
+      properties:
+        page:
+          type: integer
+          description: The current zero-indexed page number
+          example: 0
         size:
           type: integer
-          description: Size of response data when it is an array
-          example: 1
+          description: The current page size
+          example: 100
+        previousPage:
+          type: integer
+          description: The previous zero-indexed page number, null if current page is the first page
+          example: null
+        nextPage:
+          type: integer
+          description: The next zero-indexed page number, null if current page is the last page
+          example: 2
     ListProvincesResponse:
       type: object
       properties:
-        meta:
-          $ref: "#/components/schemas/ResponseMeta"
         data:
           $ref: "#/components/schemas/Provinces"
+        meta:
+          $ref: "#/components/schemas/ListResponseMeta"
     GetProvinceResponse:
       type: object
       properties:
-        meta:
-          $ref: "#/components/schemas/ResponseMeta"
         data:
           $ref: "#/components/schemas/Province"
+        meta:
+          $ref: "#/components/schemas/ResponseMeta"
     ListCommunesResponse:
       type: object
       properties:
-        meta:
-          $ref: "#/components/schemas/ResponseMeta"
         data:
           $ref: "#/components/schemas/Communes"
+        meta:
+          $ref: "#/components/schemas/ListResponseMeta"
     Provinces:
       type: array
       items:
@@ -201,6 +253,14 @@ components:
           type: string
           description: Commune name prefixed by its type, useful for displaying purpose
           example: "Phường Ba Đình"
+        provinceCode:
+          type: string
+          description: Province code
+          example: "01"
+        provinceFullName:
+          type: string
+          description: Province name prefixed by its type, useful for displaying purpose
+          example: "Thành phố Hà Nội"
   examples:
     ProvinceExample:
       summary: "Hà Nội as a province example"
