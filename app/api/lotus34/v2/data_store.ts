@@ -126,4 +126,16 @@ export class ProvinceDataStore {
         const provinceFullName = `${record.type} ${record.name}`
         return record.communes.map(c => newCommune(c, provinceCode, provinceFullName))
     }
+
+    listCommunes(): Commune[] {
+        const communes: Commune[] = []
+        for (const record of this.data) {
+            const provinceCode = record.code
+            const provinceFullName = `${record.type} ${record.name}`
+            for (const c of record.communes) {
+                communes.push(newCommune(c, provinceCode, provinceFullName))
+            }
+        }
+        return communes
+    }
 }
