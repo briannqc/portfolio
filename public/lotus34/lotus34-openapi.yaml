@@ -1,27 +1,32 @@
 openapi: 3.1.1
 info:
-  title: 🪷 Lotus34 API — Vietnam’s New Provincial Gateway
+  title: "🪷 Lotus34 API — Vietnam Provincial Data Service"
+  summary: |-
+    Lotus34 is a RESTful API offering comprehensive data on Vietnam’s 34 provinces—effective July 1, 2025 - and
+    sourced from official government records.
   description: |-
-    As of July 1st, 2025, Vietnam underwent a sweeping administrative transformation, consolidating its 63 provinces
-    into 34 and streamlining its governance structure from three tiers—province, district, and commune—to just two:
-    province and commune. This landmark reform, the most significant in centuries, marks a bold leap toward
-    modernization and administrative efficiency.
+    Since July 1, 2025, Vietnam has consolidated its 63 provinces into 34, streamlining administration into just
+    two tiers: province and commune. Lotus34 provides a clean, RESTful interface for accessing this updated
+    provincial structure.
 
-    Lotus34 is a RESTful API purpose-built to deliver core information about Vietnam's newly defined provinces.
-    It provides:
+    Available data include:
+      - 📍 Province Details: official name, area, population
+      - 🆔 ID Card Region Codes: citizen ID prefixes
+      - 🚗 Vehicle Plate Ranges: license-plate code allocations
+      - ☎️ Telephone Area Codes: landline prefixes
+      - 🏘️ Communes: complete listings of communes within each province
+      - 👍 And yet to come
 
-    📍 Province Details: Official names, areas and populations
+    All data are drawn from trusted government publications.
 
-    🆔 ID Card Region Codes: Region codes tied to each province
-
-    🚗 Vehicle Plate Numbers: License plate code ranges per province
-
-    ☎️ Telephone area code: Landed telephone code per province
-
-    🏘️ Child Communes: A full list of communes within each province
-    
-    Whether you're building data visualizations, powering location-based services, or integrating national datasets,
-    Lotus34 is your gateway to Vietnam’s revolutionary new provincial structure.
+    Try it now with our interactive documentation!
+    ---
+    References:
+      - https://thuvienphapluat.vn/phap-luat/ho-tro-phap-luat/danh-sach-3321-xa-phuong-dac-khu-chinh-thuc-cua-34-tinh-thanh-viet-nam-tra-cuu-3321-xa-phuong-dac-k-726625-221776.html
+      - https://xaydungchinhsach.chinhphu.vn/chi-tiet-34-don-vi-hanh-chinh-cap-tinh-tu-12-6-2025-119250612141845533.htm
+      - https://xaydungchinhsach.chinhphu.vn/cach-nho-12-so-can-cuoc-cong-dan-gan-chip-cuc-de-119220914161814354.htm
+      - https://vov.vn/xa-hoi/sau-ngay-172025-bien-so-xe-o-34-tinh-thanh-se-duoc-cap-the-nao-post1211001.vov
+      - https://vnptgroup.vn/danh-sach-dau-so-dien-thoai-co-dinh-63-tinh-moi-2020/
   version: 2.0.0
   contact:
     name: Ngo Quoc Cuong

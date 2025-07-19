@@ -4,6 +4,12 @@ import Link from "next/link";
 export default async function Featured() {
     const features = [
         {
+            title: "Lotus34 API",
+            subtitle: "Vietnam Provincial Data Service 2025",
+            background: "/lotus34-vietnam.png",
+            link: "/lotus34"
+        },
+        {
             title: "History of Vietnam",
             subtitle: "Educational videos to learn History of Vietnam since its early days",
             background: "/history-of-vietnam.jpeg",
@@ -43,7 +49,7 @@ async function FeaturedCard(
                     height={250}/>
             </figure>
             <div className="card-body">
-                <h2 className="card-title">{title}!</h2>
+                <h2 className="card-title">{title}</h2>
                 <p>{subtitle}</p>
                 <div className="card-actions justify-end">
                     <Link className="btn btn-outline btn-success" href={link}>Go There</Link>
