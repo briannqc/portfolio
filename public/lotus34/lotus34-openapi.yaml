@@ -231,6 +231,12 @@ components:
           type: integer
           description: Landed phone are code without "0" prefix
           example: 24
+        mergedFrom:
+          type: array
+          items:
+            type: string
+          description: Provinces merged into this new province
+          example: [ "Hà Nội" ]
     Communes:
       type: array
       items:
@@ -278,6 +284,7 @@ components:
         population: 8435650
         vehiclePlateCodes: [ 29, 30 ]
         telephoneCode: 24
+        mergedFrom: [ "Hà Nội" ]
     CommuneExample:
       summary: "Ba Đình as a commune level unit in Hà Nội"
       value:

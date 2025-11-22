@@ -14,7 +14,8 @@ type Record = {
         code: string
         name: string
         type: string
-    }[]
+    }[],
+    mergedFrom: string[]
 }
 
 type Province = {
@@ -27,6 +28,7 @@ type Province = {
     population: number
     vehiclePlateCodes: number[]
     telephoneCode: number
+    mergedFrom: string[]
 }
 
 function newProvince(record: any): Province {
@@ -40,6 +42,7 @@ function newProvince(record: any): Province {
         population: record.population,
         vehiclePlateCodes: record.vehiclePlateCodes,
         telephoneCode: record.telephoneCode,
+        mergedFrom: record.mergedFrom,
     }
 }
 

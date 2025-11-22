@@ -764,6 +764,9 @@
     "idCardPrefix": "001",
     "areaInKm2": 3359.82,
     "population": 8718000,
+    "mergedFrom": [
+      "Hà Nội"
+    ],
     "vehiclePlateCodes": [
       29,
       30,
@@ -1119,6 +1122,9 @@
     "idCardPrefix": "004",
     "areaInKm2": 6700.4,
     "population": 555809,
+    "mergedFrom": [
+      "Cao Bằng"
+    ],
     "vehiclePlateCodes": [
       11
     ],
@@ -1877,6 +1883,10 @@
     "idCardPrefix": "008",
     "areaInKm2": 13795.5,
     "population": 1865270,
+    "mergedFrom": [
+      "Hà Giang",
+      "Tuyên Quang"
+    ],
     "vehiclePlateCodes": [
       22,
       23
@@ -2162,6 +2172,9 @@
     "idCardPrefix": "011",
     "areaInKm2": 9539.9,
     "population": 653422,
+    "mergedFrom": [
+      "Điện Biên"
+    ],
     "vehiclePlateCodes": [
       27
     ],
@@ -2404,6 +2417,9 @@
     "idCardPrefix": "012",
     "areaInKm2": 9068.7,
     "population": 494626,
+    "mergedFrom": [
+      "Lai Châu"
+    ],
     "vehiclePlateCodes": [
       25
     ],
@@ -2868,6 +2884,9 @@
     "idCardPrefix": "014",
     "areaInKm2": 14109.8,
     "population": 1327430,
+    "mergedFrom": [
+      "Sơn La"
+    ],
     "vehiclePlateCodes": [
       26
     ],
@@ -3476,6 +3495,10 @@
     "idCardPrefix": "010",
     "areaInKm2": 13256.92,
     "population": 1778785,
+    "mergedFrom": [
+      "Lào Cai",
+      "Yên Bái"
+    ],
     "vehiclePlateCodes": [
       21,
       24
@@ -4043,6 +4066,10 @@
     "idCardPrefix": "019",
     "areaInKm2": 8375.21,
     "population": 1799489,
+    "mergedFrom": [
+      "Thái Nguyên",
+      "Bắc Kạn"
+    ],
     "vehiclePlateCodes": [
       20,
       97
@@ -4448,6 +4475,9 @@
     "idCardPrefix": "020",
     "areaInKm2": 8310.2,
     "population": 813978,
+    "mergedFrom": [
+      "Lạng Sơn"
+    ],
     "vehiclePlateCodes": [
       12
     ],
@@ -4786,6 +4816,9 @@
     "idCardPrefix": "022",
     "areaInKm2": 6207.9,
     "population": 1429841,
+    "mergedFrom": [
+      "Quảng Ninh"
+    ],
     "vehiclePlateCodes": [
       14
     ],
@@ -5394,6 +5427,10 @@
     "idCardPrefix": "027",
     "areaInKm2": 4718.6,
     "population": 3619433,
+    "mergedFrom": [
+      "Bắc Ninh",
+      "Bắc Giang"
+    ],
     "vehiclePlateCodes": [
       98,
       99
@@ -6297,6 +6334,11 @@
     "idCardPrefix": "025",
     "areaInKm2": 9361.38,
     "population": 4022638,
+    "mergedFrom": [
+      "Hòa Bình",
+      "Vĩnh Phúc",
+      "Phú Thọ"
+    ],
     "vehiclePlateCodes": [
       19,
       28,
@@ -6997,6 +7039,10 @@
     "idCardPrefix": "031",
     "areaInKm2": 3194.72,
     "population": 4664124,
+    "mergedFrom": [
+      "Hải Phòng",
+      "Hải Dương"
+    ],
     "vehiclePlateCodes": [
       15,
       16,
@@ -7637,6 +7683,10 @@
     "idCardPrefix": "033",
     "areaInKm2": 2514.81,
     "population": 3567943,
+    "mergedFrom": [
+      "Hưng Yên",
+      "Thái Bình"
+    ],
     "vehiclePlateCodes": [
       17,
       89
@@ -8426,6 +8476,11 @@
     "idCardPrefix": "037",
     "areaInKm2": 3942.62,
     "population": 4412264,
+    "mergedFrom": [
+      "Hà Nam",
+      "Nam Định",
+      "Ninh Bình"
+    ],
     "vehiclePlateCodes": [
       18,
       35,
@@ -9438,6 +9493,9 @@
     "idCardPrefix": "038",
     "areaInKm2": 11114.7,
     "population": 3760650,
+    "mergedFrom": [
+      "Thanh Hóa"
+    ],
     "vehiclePlateCodes": [
       36
     ],
@@ -10232,6 +10290,9 @@
     "idCardPrefix": "040",
     "areaInKm2": 16493.7,
     "population": 3470988,
+    "mergedFrom": [
+      "Nghệ An"
+    ],
     "vehiclePlateCodes": [
       37
     ],
@@ -10660,6 +10721,9 @@
     "idCardPrefix": "042",
     "areaInKm2": 5994.4,
     "population": 1622901,
+    "mergedFrom": [
+      "Hà Tĩnh"
+    ],
     "vehiclePlateCodes": [
       38
     ],
@@ -11142,6 +11206,10 @@
     "idCardPrefix": "045",
     "areaInKm2": 12700,
     "population": 1870845,
+    "mergedFrom": [
+      "Quảng Bình",
+      "Quảng Trị"
+    ],
     "vehiclePlateCodes": [
       73,
       74
@@ -11397,6 +11465,9 @@
     "idCardPrefix": "046",
     "areaInKm2": 4947.1,
     "population": 1236393,
+    "mergedFrom": [
+      "Huế"
+    ],
     "vehiclePlateCodes": [
       75
     ],
@@ -11975,6 +12046,10 @@
     "idCardPrefix": "048",
     "areaInKm2": 11859.59,
     "population": 3065628,
+    "mergedFrom": [
+      "Quảng Nam",
+      "Đà Nẵng"
+    ],
     "vehiclePlateCodes": [
       43,
       92
@@ -12566,6 +12641,10 @@
     "idCardPrefix": "051",
     "areaInKm2": 14832.55,
     "population": 2161755,
+    "mergedFrom": [
+      "Kon Tum",
+      "Quảng Ngãi"
+    ],
     "vehiclePlateCodes": [
       76,
       82
@@ -13391,6 +13470,10 @@
     "idCardPrefix": "064",
     "areaInKm2": 21576.53,
     "population": 3583693,
+    "mergedFrom": [
+      "Gia Lai",
+      "Bình Định"
+    ],
     "vehiclePlateCodes": [
       77,
       81
@@ -13796,6 +13879,10 @@
     "idCardPrefix": "056",
     "areaInKm2": 8555.86,
     "population": 2243554,
+    "mergedFrom": [
+      "Ninh Thuận",
+      "Khánh Hòa"
+    ],
     "vehiclePlateCodes": [
       79,
       85
@@ -14423,6 +14510,10 @@
     "idCardPrefix": "066",
     "areaInKm2": 18096.4,
     "population": 3346853,
+    "mergedFrom": [
+      "Phú Yên",
+      "Đắk Lắk"
+    ],
     "vehiclePlateCodes": [
       47,
       78
@@ -15182,6 +15273,11 @@
     "idCardPrefix": "068",
     "areaInKm2": 24233.07,
     "population": 3872999,
+    "mergedFrom": [
+      "Đắk Nông",
+      "Bình Thuận",
+      "Lâm Đồng"
+    ],
     "vehiclePlateCodes": [
       48,
       49,
@@ -15768,6 +15864,10 @@
     "idCardPrefix": "075",
     "areaInKm2": 12737.18,
     "population": 4491408,
+    "mergedFrom": [
+      "Bình Phước",
+      "Đồng Nai"
+    ],
     "vehiclePlateCodes": [
       39,
       60,
@@ -16792,6 +16892,11 @@
     "idCardPrefix": "079",
     "areaInKm2": 6772.59,
     "population": 14002598,
+    "mergedFrom": [
+      "Bà Rịa - Vũng Tàu",
+      "Bình Dương",
+      "Hồ Chí Minh"
+    ],
     "vehiclePlateCodes": [
       41,
       50,
@@ -17394,6 +17499,10 @@
     "idCardPrefix": "072",
     "areaInKm2": 8536.44,
     "population": 3254170,
+    "mergedFrom": [
+      "Tây Ninh",
+      "Long An"
+    ],
     "vehiclePlateCodes": [
       62,
       70
@@ -18021,6 +18130,10 @@
     "idCardPrefix": "087",
     "areaInKm2": 5938.64,
     "population": 4370046,
+    "mergedFrom": [
+      "Tiền Giang",
+      "Đồng Tháp"
+    ],
     "vehiclePlateCodes": [
       63,
       66
@@ -18780,6 +18893,11 @@
     "idCardPrefix": "086",
     "areaInKm2": 6296.2,
     "population": 4257581,
+    "mergedFrom": [
+      "Bến Tre",
+      "Vĩnh Long",
+      "Trà Vinh"
+    ],
     "vehiclePlateCodes": [
       64,
       71,
@@ -19408,6 +19526,10 @@
     "idCardPrefix": "089",
     "areaInKm2": 9888.91,
     "population": 4952238,
+    "mergedFrom": [
+      "Kiên Giang",
+      "An Giang"
+    ],
     "vehiclePlateCodes": [
       67,
       68
@@ -20041,6 +20163,11 @@
     "idCardPrefix": "092",
     "areaInKm2": 6360.83,
     "population": 4199824,
+    "mergedFrom": [
+      "Sóc Trăng",
+      "Hậu Giang",
+      "Cần Thơ"
+    ],
     "vehiclePlateCodes": [
       65,
       83,
@@ -20441,6 +20568,10 @@
     "idCardPrefix": "096",
     "areaInKm2": 7942.39,
     "population": 2606672,
+    "mergedFrom": [
+      "Bạc Liêu",
+      "Cà Mau"
+    ],
     "vehiclePlateCodes": [
       69,
       94

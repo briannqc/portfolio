@@ -23,6 +23,7 @@ async function loadAndMergeProvincesData() {
         const areaAndPopulation = areasAndPopulations.find(e => isSameVietnameseName(e.provinceName, province.name))
         province.areaInKm2 = areaAndPopulation.areaInKm2
         province.population = areaAndPopulation.population
+        province.mergedFrom = areaAndPopulation.mergedFrom
 
         const vehiclePlate = vehiclePlateCodes.find(e => isSameVietnameseName(e.provinceName, province.name))
         province.vehiclePlateCodes = vehiclePlate.plateCodes
