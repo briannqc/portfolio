@@ -762,8 +762,8 @@
       }
     ],
     "idCardPrefix": "001",
-    "areaInKm2": 3359.84,
-    "population": 8435650,
+    "areaInKm2": 3359.82,
+    "population": 8718000,
     "vehiclePlateCodes": [
       29,
       30,
@@ -1117,8 +1117,8 @@
       }
     ],
     "idCardPrefix": "004",
-    "areaInKm2": 6700.39,
-    "population": 543050,
+    "areaInKm2": 6700.4,
+    "population": 555809,
     "vehiclePlateCodes": [
       11
     ],
@@ -1875,8 +1875,8 @@
       }
     ],
     "idCardPrefix": "008",
-    "areaInKm2": 13795.6,
-    "population": 1731600,
+    "areaInKm2": 13795.5,
+    "population": 1865270,
     "vehiclePlateCodes": [
       22,
       23
@@ -2160,8 +2160,8 @@
       }
     ],
     "idCardPrefix": "011",
-    "areaInKm2": 9539.93,
-    "population": 633980,
+    "areaInKm2": 9539.9,
+    "population": 653422,
     "vehiclePlateCodes": [
       27
     ],
@@ -2402,8 +2402,8 @@
       }
     ],
     "idCardPrefix": "012",
-    "areaInKm2": 9068.73,
-    "population": 482100,
+    "areaInKm2": 9068.7,
+    "population": 494626,
     "vehiclePlateCodes": [
       25
     ],
@@ -2866,8 +2866,8 @@
       }
     ],
     "idCardPrefix": "014",
-    "areaInKm2": 14109.83,
-    "population": 1300130,
+    "areaInKm2": 14109.8,
+    "population": 1327430,
     "vehiclePlateCodes": [
       26
     ],
@@ -3474,8 +3474,8 @@
       }
     ],
     "idCardPrefix": "010",
-    "areaInKm2": 13257,
-    "population": 1656500,
+    "areaInKm2": 13256.92,
+    "population": 1778785,
     "vehiclePlateCodes": [
       21,
       24
@@ -4041,8 +4041,8 @@
       }
     ],
     "idCardPrefix": "019",
-    "areaInKm2": 8375.3,
-    "population": 1694500,
+    "areaInKm2": 8375.21,
+    "population": 1799489,
     "vehiclePlateCodes": [
       20,
       97
@@ -4446,8 +4446,8 @@
       }
     ],
     "idCardPrefix": "020",
-    "areaInKm2": 8310.18,
-    "population": 802090,
+    "areaInKm2": 8310.2,
+    "population": 813978,
     "vehiclePlateCodes": [
       12
     ],
@@ -4784,8 +4784,8 @@
       }
     ],
     "idCardPrefix": "022",
-    "areaInKm2": 6207.93,
-    "population": "1.362.88",
+    "areaInKm2": 6207.9,
+    "population": 1429841,
     "vehiclePlateCodes": [
       14
     ],
@@ -5393,7 +5393,7 @@
     ],
     "idCardPrefix": "027",
     "areaInKm2": 4718.6,
-    "population": 3509100,
+    "population": 3619433,
     "vehiclePlateCodes": [
       98,
       99
@@ -6295,8 +6295,8 @@
       }
     ],
     "idCardPrefix": "025",
-    "areaInKm2": 9361.4,
-    "population": 3663600,
+    "areaInKm2": 9361.38,
+    "population": 4022638,
     "vehiclePlateCodes": [
       19,
       28,
@@ -6995,8 +6995,8 @@
       }
     ],
     "idCardPrefix": "031",
-    "areaInKm2": 3194.7,
-    "population": 4102700,
+    "areaInKm2": 3194.72,
+    "population": 4664124,
     "vehiclePlateCodes": [
       15,
       16,
@@ -7635,8 +7635,8 @@
       }
     ],
     "idCardPrefix": "033",
-    "areaInKm2": 4718.6,
-    "population": 3509100,
+    "areaInKm2": 2514.81,
+    "population": 3567943,
     "vehiclePlateCodes": [
       17,
       89
@@ -8424,8 +8424,8 @@
       }
     ],
     "idCardPrefix": "037",
-    "areaInKm2": 3942.6,
-    "population": 3818700,
+    "areaInKm2": 3942.62,
+    "population": 4412264,
     "vehiclePlateCodes": [
       18,
       35,
@@ -9436,8 +9436,8 @@
       }
     ],
     "idCardPrefix": "038",
-    "areaInKm2": 11114.71,
-    "population": 3722060,
+    "areaInKm2": 11114.7,
+    "population": 3760650,
     "vehiclePlateCodes": [
       36
     ],
@@ -10230,8 +10230,8 @@
       }
     ],
     "idCardPrefix": "040",
-    "areaInKm2": 16486.49,
-    "population": 3416900,
+    "areaInKm2": 16493.7,
+    "population": 3470988,
     "vehiclePlateCodes": [
       37
     ],
@@ -10658,8 +10658,8 @@
       }
     ],
     "idCardPrefix": "042",
-    "areaInKm2": 5994.45,
-    "population": 1317.2,
+    "areaInKm2": 5994.4,
+    "population": 1622901,
     "vehiclePlateCodes": [
       38
     ],
@@ -11141,7 +11141,7 @@
     ],
     "idCardPrefix": "045",
     "areaInKm2": 12700,
-    "population": 1584000,
+    "population": 1870845,
     "vehiclePlateCodes": [
       73,
       74
@@ -11395,8 +11395,8 @@
       }
     ],
     "idCardPrefix": "046",
-    "areaInKm2": 4947.11,
-    "population": 1160220,
+    "areaInKm2": 4947.1,
+    "population": 1236393,
     "vehiclePlateCodes": [
       75
     ],
@@ -11973,8 +11973,8 @@
       }
     ],
     "idCardPrefix": "048",
-    "areaInKm2": 1284.73,
-    "population": 1220.19,
+    "areaInKm2": 11859.59,
+    "population": 3065628,
     "vehiclePlateCodes": [
       43,
       92
@@ -12564,8 +12564,8 @@
       }
     ],
     "idCardPrefix": "051",
-    "areaInKm2": 11859.6,
-    "population": 2819900,
+    "areaInKm2": 14832.55,
+    "population": 2161755,
     "vehiclePlateCodes": [
       76,
       82
@@ -13389,8 +13389,8 @@
       }
     ],
     "idCardPrefix": "064",
-    "areaInKm2": 21576.5,
-    "population": 3153300,
+    "areaInKm2": 21576.53,
+    "population": 3583693,
     "vehiclePlateCodes": [
       77,
       81
@@ -13794,8 +13794,8 @@
       }
     ],
     "idCardPrefix": "056",
-    "areaInKm2": 8555.9,
-    "population": 1882000,
+    "areaInKm2": 8555.86,
+    "population": 2243554,
     "vehiclePlateCodes": [
       79,
       85
@@ -14422,7 +14422,7 @@
     ],
     "idCardPrefix": "066",
     "areaInKm2": 18096.4,
-    "population": 2831300,
+    "population": 3346853,
     "vehiclePlateCodes": [
       47,
       78
@@ -15180,8 +15180,8 @@
       }
     ],
     "idCardPrefix": "068",
-    "areaInKm2": 24233.1,
-    "population": 3324400,
+    "areaInKm2": 24233.07,
+    "population": 3872999,
     "vehiclePlateCodes": [
       48,
       49,
@@ -15766,8 +15766,8 @@
       }
     ],
     "idCardPrefix": "075",
-    "areaInKm2": 12737.2,
-    "population": 4427700,
+    "areaInKm2": 12737.18,
+    "population": 4491408,
     "vehiclePlateCodes": [
       39,
       60,
@@ -16790,8 +16790,8 @@
       }
     ],
     "idCardPrefix": "079",
-    "areaInKm2": 6772.6,
-    "population": 13608800,
+    "areaInKm2": 6772.59,
+    "population": 14002598,
     "vehiclePlateCodes": [
       41,
       50,
@@ -17392,8 +17392,8 @@
       }
     ],
     "idCardPrefix": "072",
-    "areaInKm2": 8536.5,
-    "population": 2959000,
+    "areaInKm2": 8536.44,
+    "population": 3254170,
     "vehiclePlateCodes": [
       62,
       70
@@ -18019,8 +18019,8 @@
       }
     ],
     "idCardPrefix": "087",
-    "areaInKm2": 5938.7,
-    "population": 3397200,
+    "areaInKm2": 5938.64,
+    "population": 4370046,
     "vehiclePlateCodes": [
       63,
       66
@@ -18779,7 +18779,7 @@
     ],
     "idCardPrefix": "086",
     "areaInKm2": 6296.2,
-    "population": 3367400,
+    "population": 4257581,
     "vehiclePlateCodes": [
       64,
       71,
@@ -19406,8 +19406,8 @@
       }
     ],
     "idCardPrefix": "089",
-    "areaInKm2": 9888.9,
-    "population": 3679200,
+    "areaInKm2": 9888.91,
+    "population": 4952238,
     "vehiclePlateCodes": [
       67,
       68
@@ -20039,8 +20039,8 @@
       }
     ],
     "idCardPrefix": "092",
-    "areaInKm2": 6360.8,
-    "population": 3207000,
+    "areaInKm2": 6360.83,
+    "population": 4199824,
     "vehiclePlateCodes": [
       65,
       83,
@@ -20439,8 +20439,8 @@
       }
     ],
     "idCardPrefix": "096",
-    "areaInKm2": 7942.4,
-    "population": 2140600,
+    "areaInKm2": 7942.39,
+    "population": 2606672,
     "vehiclePlateCodes": [
       69,
       94
