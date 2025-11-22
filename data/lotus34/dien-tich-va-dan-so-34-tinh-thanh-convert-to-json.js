@@ -1,41 +1,33 @@
-import ExcelJS from 'exceljs';
+import Papa from 'papaparse';
 import path from "path";
+import fs from "fs";
 import {writeFile} from 'fs/promises';
 
 function normalizeString(str) {
     return str.trim().split(/\s+/).join(' ');
 }
 
-async function loadAreasAndPopulationsFromXlsx() {
-    const workbook = new ExcelJS.Workbook();
-    const filePath = path.resolve('./dien-tich-va-dan-so-34-tinh-thanh.xlsx');
-    await workbook.xlsx.readFile(filePath)
-    const sheet = workbook.worksheets[0]
+async function loadAreasAndPopulationsFromCsv() {
+    // Source: https://laodong.vn/thoi-su/ten-34-tinh-thanh-cua-viet-nam-tu-1262025-1522395.ldo
+    const filePath = path.resolve('./dien-tich-va-dan-so-34-tinh-thanh.csv');
+    const csvFile = fs.readFileSync(filePath, "utf8");
+    const csvData = Papa.parse(csvFile, {header: true, dynamicTyping: true})
 
-    const seenIndexes = {}
     const provinces = []
-    sheet.eachRow({includeEmpty: false}, (row, rowNumber) => {
-        if (rowNumber <= 2) {
-            // skip 2 header lines
-            return;
-        }
-        const [index, provinceName, areaInKm2, population, administrativeCenter] = row.values.slice(1)
-        if (seenIndexes[index] === true) {
-            // skip duplicated rows, e.g., the second row below:
-            // [28, 'Đồng Nai', 12737.2, 4427700, 'TP. Biên Hòa']
-            // [28, '(Bình Phước + Đồng Nai)', 12737.2, 4427700, 'TP. Biên Hòa']
-            return;
-        }
-
-        seenIndexes[index] = true
+    csvData.data.forEach(row => {
+        const {
+            "Tên tỉnh": provinceName,
+            "Các tỉnh hợp thành": mergedFrom,
+            "Dân số (người)": population,
+            "Diện tích (km2)": areaInKm2
+        } = row;
         provinces.push({
             provinceName: normalizeString(provinceName),
             areaInKm2: areaInKm2,
             population: population,
-            administrativeCenter: administrativeCenter
+            mergedFrom: mergedFrom.split(",").map(p => normalizeString(p))
         })
-    });
-
+    })
 
     provinces.sort((p1, p2) => p1.provinceName.localeCompare(p2.provinceName))
     return provinces;
@@ -43,7 +35,7 @@ async function loadAreasAndPopulationsFromXlsx() {
 
 
 async function run() {
-    const provinces = await loadAreasAndPopulationsFromXlsx()
+    const provinces = await loadAreasAndPopulationsFromCsv()
     const jsonFilePath = path.resolve('./dien-tich-va-dan-so-34-tinh-thanh.json');
     const json = JSON.stringify(provinces, null, 2);
     await writeFile(jsonFilePath, json, 'utf8');

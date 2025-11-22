@@ -1,206 +1,303 @@
 [
   {
     "provinceName": "An Giang",
-    "areaInKm2": 9888.9,
-    "population": 3679200,
-    "administrativeCenter": "TP. Rạch Giá"
+    "areaInKm2": 9888.91,
+    "population": 4952238,
+    "mergedFrom": [
+      "Kiên Giang",
+      "An Giang"
+    ]
   },
   {
     "provinceName": "Bắc Ninh",
     "areaInKm2": 4718.6,
-    "population": 3509100,
-    "administrativeCenter": "TP. Bắc Giang"
+    "population": 3619433,
+    "mergedFrom": [
+      "Bắc Ninh",
+      "Bắc Giang"
+    ]
   },
   {
     "provinceName": "Cà Mau",
-    "areaInKm2": 7942.4,
-    "population": 2140600,
-    "administrativeCenter": "TP. Cà Mau"
+    "areaInKm2": 7942.39,
+    "population": 2606672,
+    "mergedFrom": [
+      "Bạc Liêu",
+      "Cà Mau"
+    ]
   },
   {
     "provinceName": "Cần Thơ",
-    "areaInKm2": 6360.8,
-    "population": 3207000,
-    "administrativeCenter": "Quận Ninh Kiều"
+    "areaInKm2": 6360.83,
+    "population": 4199824,
+    "mergedFrom": [
+      "Sóc Trăng",
+      "Hậu Giang",
+      "Cần Thơ"
+    ]
   },
   {
     "provinceName": "Cao Bằng",
-    "areaInKm2": 6700.39,
-    "population": 543050,
-    "administrativeCenter": "TP. Cao Bằng"
+    "areaInKm2": 6700.4,
+    "population": 555809,
+    "mergedFrom": [
+      "Cao Bằng"
+    ]
   },
   {
     "provinceName": "Đà Nẵng",
-    "areaInKm2": 1284.73,
-    "population": 1220.19,
-    "administrativeCenter": "Quận Hải Châu"
+    "areaInKm2": 11859.59,
+    "population": 3065628,
+    "mergedFrom": [
+      "Quảng Nam",
+      "Đà Nẵng"
+    ]
   },
   {
     "provinceName": "Đắk Lắk",
     "areaInKm2": 18096.4,
-    "population": 2831300,
-    "administrativeCenter": "TP. Buôn Ma Thuột"
+    "population": 3346853,
+    "mergedFrom": [
+      "Phú Yên",
+      "Đắk Lắk"
+    ]
   },
   {
     "provinceName": "Điện Biên",
-    "areaInKm2": 9539.93,
-    "population": 633980,
-    "administrativeCenter": "TP. Điện Biên Phủ"
+    "areaInKm2": 9539.9,
+    "population": 653422,
+    "mergedFrom": [
+      "Điện Biên"
+    ]
   },
   {
     "provinceName": "Đồng Nai",
-    "areaInKm2": 12737.2,
-    "population": 4427700,
-    "administrativeCenter": "TP. Biên Hòa"
+    "areaInKm2": 12737.18,
+    "population": 4491408,
+    "mergedFrom": [
+      "Bình Phước",
+      "Đồng Nai"
+    ]
   },
   {
     "provinceName": "Đồng Tháp",
-    "areaInKm2": 5938.7,
-    "population": 3397200,
-    "administrativeCenter": "TP. Mỹ Tho"
+    "areaInKm2": 5938.64,
+    "population": 4370046,
+    "mergedFrom": [
+      "Tiền Giang",
+      "Đồng Tháp"
+    ]
   },
   {
     "provinceName": "Gia Lai",
-    "areaInKm2": 21576.5,
-    "population": 3153300,
-    "administrativeCenter": "TP. Quy Nhơn"
+    "areaInKm2": 21576.53,
+    "population": 3583693,
+    "mergedFrom": [
+      "Gia Lai",
+      "Bình Định"
+    ]
   },
   {
     "provinceName": "Hà Nội",
-    "areaInKm2": 3359.84,
-    "population": 8435650,
-    "administrativeCenter": "Quận Hoàn Kiếm"
+    "areaInKm2": 3359.82,
+    "population": 8718000,
+    "mergedFrom": [
+      "Hà Nội"
+    ]
   },
   {
     "provinceName": "Hà Tĩnh",
-    "areaInKm2": 5994.45,
-    "population": 1317.2,
-    "administrativeCenter": "TP. Hà Tĩnh"
+    "areaInKm2": 5994.4,
+    "population": 1622901,
+    "mergedFrom": [
+      "Hà Tĩnh"
+    ]
   },
   {
     "provinceName": "Hải Phòng",
-    "areaInKm2": 3194.7,
-    "population": 4102700,
-    "administrativeCenter": "TP. Thủy Nguyên"
+    "areaInKm2": 3194.72,
+    "population": 4664124,
+    "mergedFrom": [
+      "Hải Phòng",
+      "Hải Dương"
+    ]
   },
   {
     "provinceName": "Hồ Chí Minh",
-    "areaInKm2": 6772.6,
-    "population": 13608800,
-    "administrativeCenter": "Quận 1"
+    "areaInKm2": 6772.59,
+    "population": 14002598,
+    "mergedFrom": [
+      "Bà Rịa - Vũng Tàu",
+      "Bình Dương",
+      "Hồ Chí Minh"
+    ]
   },
   {
     "provinceName": "Huế",
-    "areaInKm2": 4947.11,
-    "population": 1160220,
-    "administrativeCenter": "Quận Phú Xuân, Thuận Hóa"
+    "areaInKm2": 4947.1,
+    "population": 1236393,
+    "mergedFrom": [
+      "Huế"
+    ]
   },
   {
     "provinceName": "Hưng Yên",
-    "areaInKm2": 4718.6,
-    "population": 3509100,
-    "administrativeCenter": "TP. Hưng Yên"
+    "areaInKm2": 2514.81,
+    "population": 3567943,
+    "mergedFrom": [
+      "Hưng Yên",
+      "Thái Bình"
+    ]
   },
   {
-    "provinceName": "Khánh Hoà",
-    "areaInKm2": 8555.9,
-    "population": 1882000,
-    "administrativeCenter": "TP. Nha Trang"
+    "provinceName": "Khánh Hòa",
+    "areaInKm2": 8555.86,
+    "population": 2243554,
+    "mergedFrom": [
+      "Ninh Thuận",
+      "Khánh Hòa"
+    ]
   },
   {
     "provinceName": "Lai Châu",
-    "areaInKm2": 9068.73,
-    "population": 482100,
-    "administrativeCenter": "TP. Lai Châu"
+    "areaInKm2": 9068.7,
+    "population": 494626,
+    "mergedFrom": [
+      "Lai Châu"
+    ]
   },
   {
     "provinceName": "Lâm Đồng",
-    "areaInKm2": 24233.1,
-    "population": 3324400,
-    "administrativeCenter": "TP. Đà Lạt"
+    "areaInKm2": 24233.07,
+    "population": 3872999,
+    "mergedFrom": [
+      "Đắk Nông",
+      "Bình Thuận",
+      "Lâm Đồng"
+    ]
   },
   {
     "provinceName": "Lạng Sơn",
-    "areaInKm2": 8310.18,
-    "population": 802090,
-    "administrativeCenter": "TP. Lạng Sơn"
+    "areaInKm2": 8310.2,
+    "population": 813978,
+    "mergedFrom": [
+      "Lạng Sơn"
+    ]
   },
   {
     "provinceName": "Lào Cai",
-    "areaInKm2": 13257,
-    "population": 1656500,
-    "administrativeCenter": "TP. Yên Bái"
+    "areaInKm2": 13256.92,
+    "population": 1778785,
+    "mergedFrom": [
+      "Lào Cai",
+      "Yên Bái"
+    ]
   },
   {
     "provinceName": "Nghệ An",
-    "areaInKm2": 16486.49,
-    "population": 3416900,
-    "administrativeCenter": "TP. Vinh"
+    "areaInKm2": 16493.7,
+    "population": 3470988,
+    "mergedFrom": [
+      "Nghệ An"
+    ]
   },
   {
     "provinceName": "Ninh Bình",
-    "areaInKm2": 3942.6,
-    "population": 3818700,
-    "administrativeCenter": "TP. Hoa Lư"
+    "areaInKm2": 3942.62,
+    "population": 4412264,
+    "mergedFrom": [
+      "Hà Nam",
+      "Nam Định",
+      "Ninh Bình"
+    ]
   },
   {
     "provinceName": "Phú Thọ",
-    "areaInKm2": 9361.4,
-    "population": 3663600,
-    "administrativeCenter": "TP. Việt Trì"
+    "areaInKm2": 9361.38,
+    "population": 4022638,
+    "mergedFrom": [
+      "Hòa Bình",
+      "Vĩnh Phúc",
+      "Phú Thọ"
+    ]
   },
   {
     "provinceName": "Quảng Ngãi",
-    "areaInKm2": 11859.6,
-    "population": 2819900,
-    "administrativeCenter": "TP. Quảng Ngãi"
+    "areaInKm2": 14832.55,
+    "population": 2161755,
+    "mergedFrom": [
+      "Kon Tum",
+      "Quảng Ngãi"
+    ]
   },
   {
     "provinceName": "Quảng Ninh",
-    "areaInKm2": 6207.93,
-    "population": "1.362.88",
-    "administrativeCenter": "TP. Hạ Long"
+    "areaInKm2": 6207.9,
+    "population": 1429841,
+    "mergedFrom": [
+      "Quảng Ninh"
+    ]
   },
   {
     "provinceName": "Quảng Trị",
     "areaInKm2": 12700,
-    "population": 1584000,
-    "administrativeCenter": "TP. Đồng Hới"
+    "population": 1870845,
+    "mergedFrom": [
+      "Quảng Bình",
+      "Quảng Trị"
+    ]
   },
   {
     "provinceName": "Sơn La",
-    "areaInKm2": 14109.83,
-    "population": 1300130,
-    "administrativeCenter": "TP. Sơn La"
+    "areaInKm2": 14109.8,
+    "population": 1327430,
+    "mergedFrom": [
+      "Sơn La"
+    ]
   },
   {
     "provinceName": "Tây Ninh",
-    "areaInKm2": 8536.5,
-    "population": 2959000,
-    "administrativeCenter": "TP. Tây Ninh"
+    "areaInKm2": 8536.44,
+    "population": 3254170,
+    "mergedFrom": [
+      "Tây Ninh",
+      "Long An"
+    ]
   },
   {
     "provinceName": "Thái Nguyên",
-    "areaInKm2": 8375.3,
-    "population": 1694500,
-    "administrativeCenter": "TP. Thái Nguyên"
+    "areaInKm2": 8375.21,
+    "population": 1799489,
+    "mergedFrom": [
+      "Thái Nguyên",
+      "Bắc Kạn"
+    ]
   },
   {
     "provinceName": "Thanh Hóa",
-    "areaInKm2": 11114.71,
-    "population": 3722060,
-    "administrativeCenter": "TP. Thanh Hóa"
+    "areaInKm2": 11114.7,
+    "population": 3760650,
+    "mergedFrom": [
+      "Thanh Hóa"
+    ]
   },
   {
     "provinceName": "Tuyên Quang",
-    "areaInKm2": 13795.6,
-    "population": 1731600,
-    "administrativeCenter": "TP. Tuyên Quang"
+    "areaInKm2": 13795.5,
+    "population": 1865270,
+    "mergedFrom": [
+      "Hà Giang",
+      "Tuyên Quang"
+    ]
   },
   {
     "provinceName": "Vĩnh Long",
     "areaInKm2": 6296.2,
-    "population": 3367400,
-    "administrativeCenter": "TP. Vĩnh Long"
+    "population": 4257581,
+    "mergedFrom": [
+      "Bến Tre",
+      "Vĩnh Long",
+      "Trà Vinh"
+    ]
   }
 ]
