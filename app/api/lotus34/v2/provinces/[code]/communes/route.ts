@@ -4,15 +4,16 @@ import {APIResponse} from "@/app/api/lotus34/v2/response";
 
 export async function GET(
     _: NextRequest,
-    {params}: { params: { code: string; } }
+    {params}: { params: Promise<{ code: string; }> }
 ): Promise<NextResponse<APIResponse>> {
+    const {code} = await params
     const ds = await loadDataStore()
-    const communes = ds.listCommunesByProvinceCode(params.code)
+    const communes = ds.listCommunesByProvinceCode(code)
     if (!communes) {
         const resp: APIResponse = {
             data: null,
             meta: {
-                message: `Province Code ${params.code} not found`,
+                message: `Province Code ${code} not found`,
             }
         }
         return NextResponse.json(resp, {status: 404})
