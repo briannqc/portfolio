@@ -18,11 +18,15 @@ export default async function VideoLibrary() {
 }
 
 async function fetchVideoLibrary(): Promise<Video[]> {
-    const url = getURL("/api/v1/vietnam-history/video-library")
-    const res = await fetch(url)
-    if (!res.ok) {
+    try {
+        const url = getURL("/api/v1/vietnam-history/video-library")
+        const res = await fetch(url)
+        if (!res.ok) {
+            return []
+        }
+        const body = await res.json()
+        return body["data"] || []
+    } catch {
         return []
     }
-    const body = await res.json()
-    return body["data"]
 }
