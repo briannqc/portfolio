@@ -98,24 +98,58 @@ function parseDateDDMMYYYY(str) {
 
 export async function parseVietcombank(doc, fileName) {
   const transactions = [];
-  let cardholderName = 'NGO QUOC CUONG';
+  let cardholderName = '';
   let cardType = 'Vietcombank Visa Signature';
-  let accountOrCard = 'VS00700393113';
-  let statementDate = '2026-10-20';
-  let dueDate = '2026-11-16';
-  let creditLimit = 150000000;
-  let statementBalance = 60663854;
-  let minPayment = 1213277;
+  let accountOrCard = '';
+  let statementDate = '';
+  let dueDate = '';
+  let creditLimit = 0;
+  let statementBalance = 0;
+  let minPayment = 0;
 
   for (let pageNum = 1; pageNum <= doc.numPages; pageNum++) {
     const page = await doc.getPage(pageNum);
     const tc = await page.getTextContent();
+    if (pageNum === 1) {
+      const allItems = tc.items.map(i => ({ text: i.str.trim(), x: Math.round(i.transform[4]), y: Math.round(i.transform[5]) })).filter(i => i.text);
+      const fullPageText = allItems.map(i => i.text).join(' ');
+
+      const nameItem = allItems.find(i => i.x >= 350 && i.x <= 375 && i.y >= 665 && i.y <= 685 && !/mr\./i.test(i.text));
+      if (nameItem) cardholderName = nameItem.text;
+      else if (fullPageText.includes('NGO QUOC CUONG')) cardholderName = 'NGO QUOC CUONG';
+
+      const accItem = allItems.find(i => /^[A-Z]{2}\d{10,13}$/.test(i.text));
+      if (accItem) accountOrCard = accItem.text;
+
+      const cardTypeItem = allItems.find(i => /vietcombank\s+[a-z\s]+/i.test(i.text) && !/account statement/i.test(i.text));
+      if (cardTypeItem) cardType = cardTypeItem.text;
+
+      const regexLimit = fullPageText.match(/Credit Limit:\s*([\d,]+\.?\d*)/i);
+      const itemLimit = allItems.find(it => it.text.match(/^\d{3},\d{3},\d{3}/));
+      if (regexLimit) creditLimit = parseVND(regexLimit[1]);
+      else if (itemLimit) creditLimit = parseVND(itemLimit.text);
+
+      const stmtLabel = allItems.find(it => /statement date/i.test(it.text));
+      const stmtItem = allItems.find(it => stmtLabel && Math.abs(it.y - stmtLabel.y) <= 5 && /^\d{2}-\d{2}-\d{4}$/.test(it.text));
+      if (stmtItem) statementDate = parseDateDDMMYYYY(stmtItem.text);
+
+      const propLabel = allItems.find(it => /proposed payment date/i.test(it.text));
+      const dueItem = allItems.find(it => propLabel && Math.abs(it.y - propLabel.y) <= 5 && /^\d{2}-\d{2}-\d{4}$/.test(it.text));
+      if (dueItem) dueDate = parseDateDDMMYYYY(dueItem.text);
+
+      const bal = allItems.find(it => it.x > 200 && it.y >= 605 && it.y <= 625 && /[\d,]+\.00/.test(it.text));
+      if (bal) statementBalance = parseVND(bal.text);
+
+      const minP = allItems.find(it => it.x > 200 && it.y >= 575 && it.y <= 595 && /[\d,]+\.00/.test(it.text));
+      if (minP) minPayment = parseVND(minP.text);
+    }
+
     const rowsMap = {};
     for (const item of tc.items) {
       if (!item.str.trim()) continue;
       const y = Math.round(item.transform[5] / 3) * 3;
       if (!rowsMap[y]) rowsMap[y] = [];
-      rowsMap[y].push({ text: item.str, x: Math.round(item.transform[4]) });
+      rowsMap[y].push({ text: item.str, x: Math.round(item.transform[4]), y: Math.round(item.transform[5]) });
     }
 
     const sortedY = Object.keys(rowsMap).map(Number).sort((a, b) => b - a);
@@ -123,32 +157,6 @@ export async function parseVietcombank(doc, fileName) {
     for (let i = 0; i < sortedY.length; i++) {
       const y = sortedY[i];
       const items = rowsMap[y].sort((a, b) => a.x - b.x);
-      const fullText = items.map(t => t.text).join(' ');
-
-      if (pageNum === 1) {
-        if (fullText.includes('VIETCOMBANK VISA SIGNATURE')) cardType = 'Vietcombank Visa Signature';
-        if (fullText.includes('VS00700393113')) accountOrCard = 'VS00700393113';
-        if (fullText.includes('NGO QUOC CUONG')) cardholderName = 'NGO QUOC CUONG';
-
-        const regexMatch = fullText.match(/Credit Limit:\s*([\d,]+\.?\d*)/i);
-        const itemMatch = items.find(it => it.text.match(/^\d{3},\d{3},\d{3}/));
-        if (regexMatch) creditLimit = parseVND(regexMatch[1]);
-        else if (itemMatch) creditLimit = parseVND(itemMatch.text);
-
-        const dateMatch = fullText.match(/(\d{2}-\d{2}-\d{4})/);
-        if (fullText.includes('Statement Date') && dateMatch) statementDate = parseDateDDMMYYYY(dateMatch[1]);
-        if (fullText.includes('Proposed Payment Date') && dateMatch) dueDate = parseDateDDMMYYYY(dateMatch[1]);
-
-        if (fullText.includes('Curent Statement Balance') || fullText.includes('Statement Balance:')) {
-          const bal = items.find(it => it.x > 200 && /[\d,]+\.00/.test(it.text));
-          if (bal) statementBalance = parseVND(bal.text);
-        }
-
-        if (fullText.includes('Min Payment Due:')) {
-          const minP = items.find(it => it.x > 200 && /[\d,]+\.00/.test(it.text));
-          if (minP) minPayment = parseVND(minP.text);
-        }
-      }
 
       const txnDateItem = items.find(it => it.x >= 40 && it.x <= 60 && /^\d{2}-\d{2}-\d{4}$/.test(it.text));
       if (txnDateItem) {
@@ -224,25 +232,63 @@ export async function parseVietcombank(doc, fileName) {
 
 export async function parseHSBC(doc, fileName) {
   const transactions = [];
-  let cardholderName = 'NGO QUOC CUONG';
-  let cardType = 'HSBC Visa Cash Back';
-  let accountOrCard = '4450 9400 xxxx 7667';
-  let statementDate = '2026-10-07';
-  let dueDate = '2026-11-01';
-  let creditLimit = 240500000;
-  let statementBalance = 4990104;
-  let minPayment = 50000;
+  let cardholderName = '';
+  let cardType = 'HSBC Credit Card';
+  let accountOrCard = '';
+  let statementDate = '';
+  let dueDate = '';
+  let creditLimit = 0;
+  let statementBalance = 0;
+  let minPayment = 0;
   let stmtYear = 2026;
 
   for (let pageNum = 1; pageNum <= doc.numPages; pageNum++) {
     const page = await doc.getPage(pageNum);
     const tc = await page.getTextContent();
+    if (pageNum === 1) {
+      const allItems = tc.items.map(i => ({ text: i.str.trim(), x: Math.round(i.transform[4]), y: Math.round(i.transform[5]) })).filter(i => i.text);
+      const fullPageText = allItems.map(i => i.text).join(' ');
+
+      const nameItem = allItems.find(i => i.x >= 50 && i.x <= 75 && i.y >= 685 && i.y <= 705 && !/cardholder/i.test(i.text));
+      if (nameItem) cardholderName = nameItem.text;
+      else if (fullPageText.includes('NGO QUOC CUONG')) cardholderName = 'NGO QUOC CUONG';
+
+      const cardNumItem = allItems.find(i => /\d{4}\s*\d{4}\s*[xX\d]{4}\s*\d{4}/.test(i.text));
+      if (cardNumItem) accountOrCard = cardNumItem.text;
+
+      const cardTypeItem = allItems.find(i => /hsbc\s+[a-z\s]+/i.test(i.text) && !/hsbc bank/i.test(i.text));
+      if (cardTypeItem) cardType = cardTypeItem.text;
+      else if (fullPageText.includes('HSBC VISA CASH BACK')) cardType = 'HSBC Visa Cash Back';
+
+      const stmtDateItem = allItems.find(it => /^\d{2}\/\d{2}\/\d{4}$/.test(it.text));
+      if (stmtDateItem) {
+        const [d, m, y] = stmtDateItem.text.split('/');
+        statementDate = `${y}-${m}-${d}`;
+        stmtYear = parseInt(y, 10);
+      }
+
+      const dueMatch = fullPageText.match(/(\d{2}\/\d{2}\/\d{4})/g);
+      if (dueMatch && dueMatch.length > 1) {
+        const [d, m, y] = dueMatch[1].split('/');
+        dueDate = `${y}-${m}-${d}`;
+      }
+
+      const bal = allItems.find(it => it.x > 400 && it.y >= 580 && it.y <= 600 && /[\d,]+\.00/.test(it.text));
+      if (bal) statementBalance = parseVND(bal.text);
+
+      const minP = allItems.find(it => it.x > 400 && it.y >= 555 && it.y <= 575 && /[\d,]+\.00/.test(it.text));
+      if (minP) minPayment = parseVND(minP.text);
+
+      const lMatch = fullPageText.match(/Your Credit Limit:\s*(?:VND\s*)?([\d,]+)/i);
+      if (lMatch) creditLimit = parseVND(lMatch[1]);
+    }
+
     const rowsMap = {};
     for (const item of tc.items) {
       if (!item.str.trim()) continue;
       const y = Math.round(item.transform[5] / 3) * 3;
       if (!rowsMap[y]) rowsMap[y] = [];
-      rowsMap[y].push({ text: item.str, x: Math.round(item.transform[4]) });
+      rowsMap[y].push({ text: item.str, x: Math.round(item.transform[4]), y: Math.round(item.transform[5]) });
     }
 
     const sortedY = Object.keys(rowsMap).map(Number).sort((a, b) => b - a);
@@ -251,40 +297,6 @@ export async function parseHSBC(doc, fileName) {
       const y = sortedY[i];
       const items = rowsMap[y].sort((a, b) => a.x - b.x);
       const fullText = items.map(t => t.text).join(' ');
-
-      if (pageNum === 1) {
-        if (fullText.includes('NGO QUOC CUONG')) cardholderName = 'NGO QUOC CUONG';
-        if (fullText.includes('HSBC VISA CASH BACK')) cardType = 'HSBC Visa Cash Back';
-        if (fullText.includes('4450 9400 xxxx 7667')) accountOrCard = '4450 9400 xxxx 7667';
-
-        const stmtDateItem = items.find(it => /^\d{2}\/\d{2}\/\d{4}$/.test(it.text));
-        if (stmtDateItem && !statementDate) {
-          const [d, m, y] = stmtDateItem.text.split('/');
-          statementDate = `${y}-${m}-${d}`;
-          stmtYear = parseInt(y, 10);
-        }
-
-        const dueMatch = fullText.match(/(\d{2}\/\d{2}\/\d{4})/g);
-        if (dueMatch && dueMatch.length > 1 && !dueDate) {
-          const [d, m, y] = dueMatch[1].split('/');
-          dueDate = `${y}-${m}-${d}`;
-        }
-
-        if (fullText.includes('Statement balance') || fullText.includes('Dư nợ cuối kỳ')) {
-          const bal = items.find(it => it.x > 400 && /[\d,]+\.00/.test(it.text));
-          if (bal) statementBalance = parseVND(bal.text);
-        }
-
-        if (fullText.includes('Minimum payment') || fullText.includes('Thanh toán tối thiểu')) {
-          const minP = items.find(it => it.x > 400 && /[\d,]+\.00/.test(it.text));
-          if (minP) minPayment = parseVND(minP.text);
-        }
-
-        if (fullText.includes('Your Credit Limit:')) {
-          const lMatch = fullText.match(/VND\s*([\d,]+)/i);
-          if (lMatch) creditLimit = parseVND(lMatch[1]);
-        }
-      }
 
       const txnDateItem = items.find(it => it.x >= 60 && it.x <= 85 && /^\d{2}\/\d{2}$/.test(it.text));
       if (txnDateItem) {
@@ -357,7 +369,32 @@ export async function parseHSBC(doc, fileName) {
   };
 }
 
-export async function parsePdfFile(filePath, password, bankHint) {
+export function detectBankFromText(fullText) {
+  let vcbScore = 0;
+  let hsbcScore = 0;
+
+  const vcbMatches = fullText.match(/vietcombank/gi);
+  if (vcbMatches) vcbScore += vcbMatches.length * 2;
+  if (/sao\s*kê\s*tài\s*khoản\s*thẻ\s*tín\s*dụng/i.test(fullText)) vcbScore += 4;
+  if (/proposed\s*payment\s*date/i.test(fullText)) vcbScore += 3;
+  if (/cu(?:r)?rent\s*statement\s*balance/i.test(fullText)) vcbScore += 3;
+  if (/min\s*payment\s*due/i.test(fullText)) vcbScore += 2;
+  if (/\bVS\d{10,13}\b/.test(fullText)) vcbScore += 3;
+
+  const hsbcMatches = fullText.match(/hsbc/gi);
+  if (hsbcMatches) hsbcScore += hsbcMatches.length * 2;
+  if (/hsbc\s*bank/i.test(fullText)) hsbcScore += 4;
+  if (/dư\s*nợ\s*cuối\s*kỳ/i.test(fullText)) hsbcScore += 2;
+  if (/thanh\s*toán\s*tối\s*thiểu/i.test(fullText)) hsbcScore += 2;
+  if (/cashback\s*programme/i.test(fullText)) hsbcScore += 2;
+  if (/your\s*credit\s*limit/i.test(fullText)) hsbcScore += 2;
+
+  if (vcbScore >= 3 && vcbScore > hsbcScore) return 'Vietcombank';
+  if (hsbcScore >= 3 && hsbcScore > vcbScore) return 'HSBC';
+  return null;
+}
+
+export async function parsePdfFile(filePath, password) {
   const data = new Uint8Array(fs.readFileSync(filePath));
   const fileName = path.basename(filePath);
   const doc = await pdfjsLib.getDocument({
@@ -366,18 +403,32 @@ export async function parsePdfFile(filePath, password, bankHint) {
     standardFontDataUrl: path.join(process.cwd(), 'node_modules/pdfjs-dist/standard_fonts/'),
   }).promise;
 
-  const page1 = await doc.getPage(1);
-  const tc = await page1.getTextContent();
-  const page1Text = tc.items.map(it => it.str || '').join(' ');
+  let combinedText = '';
+  const numPagesToCheck = Math.min(doc.numPages, 2);
+  for (let p = 1; p <= numPagesToCheck; p++) {
+    const page = await doc.getPage(p);
+    const tc = await page.getTextContent();
+    combinedText += ' ' + tc.items.map(it => it.str || '').join(' ');
+  }
 
-  if (
-    bankHint === 'Vietcombank' ||
-    page1Text.includes('VIETCOMBANK') ||
-    page1Text.includes('Vietcombank') ||
-    fileName.toLowerCase().startsWith('vs')
-  ) {
-    return parseVietcombank(doc, fileName);
+  const detectedBank = detectBankFromText(combinedText);
+
+  if (detectedBank === 'Vietcombank') {
+    const result = await parseVietcombank(doc, fileName);
+    if (result.transactions.length === 0 && result.summary.statementBalance === 0) {
+      throw new Error('Detected Vietcombank statement but failed to extract transactions or balance.');
+    }
+    return result;
+  } else if (detectedBank === 'HSBC') {
+    const result = await parseHSBC(doc, fileName);
+    if (result.transactions.length === 0 && result.summary.statementBalance === 0) {
+      throw new Error('Detected HSBC statement but failed to extract transactions or balance.');
+    }
+    return result;
   } else {
-    return parseHSBC(doc, fileName);
+    throw new Error(
+      'Unsupported or unrecognized bank statement format. Currently supported banks: Vietcombank, HSBC.'
+    );
   }
 }
+

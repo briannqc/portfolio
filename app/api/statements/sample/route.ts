@@ -6,7 +6,7 @@ import { promisify } from 'util';
 
 const execFileAsync = promisify(execFile);
 
-async function parseStatementWithCli(filePath: string, password: string, bankHint: string = '') {
+async function parseStatementWithCli(filePath: string, password: string) {
   const cwd = process.cwd();
   const scriptPath = path.join(cwd, 'scripts', 'parse-statement.mjs');
 
@@ -16,7 +16,6 @@ async function parseStatementWithCli(filePath: string, password: string, bankHin
       scriptPath,
       filePath,
       password || '',
-      bankHint || '',
     ], {
       cwd,
       maxBuffer: 10 * 1024 * 1024,
@@ -63,7 +62,6 @@ export async function POST(req: Request) {
     const formData = await req.formData();
     const file = formData.get('file') as File | null;
     const password = (formData.get('password') as string) || '';
-    const bankHint = (formData.get('bank') as string) || '';
 
     if (!file) {
       return NextResponse.json({ success: false, error: 'No file provided' }, { status: 400 });
@@ -77,7 +75,7 @@ export async function POST(req: Request) {
     fs.writeFileSync(tempFilePath, Buffer.from(arrayBuffer));
 
     try {
-      const parsed = await parseStatementWithCli(tempFilePath, password, bankHint);
+      const parsed = await parseStatementWithCli(tempFilePath, password);
       return NextResponse.json({
         success: true,
         data: parsed,
