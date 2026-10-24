@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "mkdir -p public && cp node_modules/pdfjs-dist/build/pdf.worker.min.mjs public/ && cp -r node_modules/pdfjs-dist/standard_fonts/ public/"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
@@ -20,10 +21,12 @@
     "mobx": "^6.13.7",
     "next": "^16.4.2",
     "papaparse": "^5.7.0",
+    "pdfjs-dist": "^6.4.299",
     "postcss": "^8.5.31",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-infinite-scroll-component": "^7.2.1",
+    "recharts": "^3.10.1",
     "redoc": "^2.5.4",
     "styled-components": "^6.6.0",
     "swagger-ui-react": "^5.34.0",
