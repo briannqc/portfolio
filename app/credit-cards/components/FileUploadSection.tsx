@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { BankType, ParsedStatementResult } from '../types';
+import { ParsedStatementResult } from '../types';
 import { parsePdfInBrowser } from '../lib/parsers';
 
 interface FileUploadSectionProps {
@@ -12,7 +12,6 @@ interface FileUploadSectionProps {
 
 interface PendingFile {
   file: File;
-  bankHint: BankType;
   arrayBuffer: ArrayBuffer;
 }
 
@@ -47,14 +46,8 @@ export default function FileUploadSection({
     setParsingError(null);
     const arrayBuffer = await file.arrayBuffer();
 
-    let bankHint: BankType = 'Vietcombank';
-    if (file.name.toLowerCase().includes('hsbc')) {
-      bankHint = 'HSBC';
-    }
-
     setPendingFile({
       file,
-      bankHint,
       arrayBuffer,
     });
     setPasswordInput('');
@@ -97,7 +90,6 @@ export default function FileUploadSection({
         const formData = new FormData();
         formData.append('file', pendingFile.file);
         formData.append('password', passwordInput);
-        formData.append('bank', pendingFile.bankHint);
 
         const res = await fetch('/api/statements/sample', {
           method: 'POST',
@@ -125,7 +117,7 @@ export default function FileUploadSection({
         );
       } else {
         setParsingError(
-          'Unable to parse statement. Please check the password or bank template.'
+          msg || 'Unable to parse statement. Please check the password or ensure the file is a valid statement.'
         );
       }
     } finally {
@@ -241,24 +233,28 @@ export default function FileUploadSection({
           </div>
 
           <form onSubmit={handleDecryptAndParse} className="mt-4 space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="label text-xs font-semibold py-1">
-                  Bank Template
-                </label>
-                <select
-                  value={pendingFile.bankHint}
-                  onChange={(e) =>
-                    setPendingFile({
-                      ...pendingFile,
-                      bankHint: e.target.value as BankType,
-                    })
-                  }
-                  className="select select-bordered select-sm w-full"
-                >
-                  <option value="Vietcombank">Vietcombank (Visa Signature)</option>
-                  <option value="HSBC">HSBC (Visa Cash Back)</option>
-                </select>
+            <div className="space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 p-2.5 rounded-xl bg-base-200/60 border border-base-200 text-xs">
+                <div className="flex items-center gap-1.5 text-base-content/80">
+                  <svg
+                    className="w-4 h-4 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                  <span className="font-medium">Bank Template Detection:</span>
+                </div>
+                <span className="badge badge-primary badge-outline badge-sm font-medium gap-1 self-start sm:self-auto">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  Dynamic (Vietcombank & HSBC)
+                </span>
               </div>
 
               <div>
@@ -270,7 +266,7 @@ export default function FileUploadSection({
                     type={showPassword ? 'text' : 'password'}
                     value={passwordInput}
                     onChange={(e) => setPasswordInput(e.target.value)}
-                    placeholder="Enter password (e.g. DDMMYYYY / Passport / ID)"
+                    placeholder="Enter statement password (e.g. DDMMYYYY / Passport / ID)"
                     required
                     autoFocus
                     className="input input-bordered input-sm w-full pr-14"
@@ -283,6 +279,9 @@ export default function FileUploadSection({
                     {showPassword ? 'Hide' : 'Show'}
                   </button>
                 </div>
+                <label className="label text-[11px] text-base-content/60 py-1">
+                  Source bank and statement template will be verified and extracted dynamically upon decryption.
+                </label>
               </div>
             </div>
 
