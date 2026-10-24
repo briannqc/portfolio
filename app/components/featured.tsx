@@ -4,6 +4,12 @@ import Link from "next/link";
 export default async function Featured() {
     const features = [
         {
+            title: "Credit Card Visualizer",
+            subtitle: "Securely visualize & merge credit card statements (Vietcombank & HSBC)",
+            background: "/credit-card-visualizer.jpg",
+            link: "/credit-cards"
+        },
+        {
             title: "Lotus34 API",
             subtitle: "Vietnam Provincial Data Service 2025",
             background: "/lotus34-vietnam.png",

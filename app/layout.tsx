@@ -52,6 +52,7 @@ function NavBar() {
                                 Projects
                             </summary>
                             <ul className="p-2 bg-base-100">
+                                <li><Link href="/credit-cards">Credit Card Visualizer</Link></li>
                                 <li><Link href="/vietnam-history">History of Vietnam</Link></li>
                                 <li><Link href="/office-check-in">Office Check-in</Link></li>
                             </ul>
